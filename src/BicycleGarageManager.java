@@ -19,7 +19,7 @@ public class BicycleGarageManager {
 
         if (beganEntering == null) {
             beganEntering = new Date();
-        } else if (beganEntering.getTime()+1000*60 > new Date().getTime()) {
+        } else if (beganEntering.getTime()+1000*60 < new Date().getTime()) {
             // If began entering more than 60 seconds ago
             terminal.lightLED(PinCodeTerminal.RED_LED, 3);
             beganEntering = null;
