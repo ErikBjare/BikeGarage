@@ -9,7 +9,6 @@ public class BicycleGarage {
         BarcodePrinter printer = new BarcodePrinterTestDriver();
         PinCodeTerminal terminal = new PinCodeTerminalTestDriver();
         manager.registerHardwareDrivers(printer, entryLock, exitLock, terminal);
-        terminal.register(manager);
         BarcodeReader readerEntry = new BarcodeReaderEntryTestDriver();
         BarcodeReader readerExit = new BarcodeReaderExitTestDriver();
         readerEntry.register(manager);
