@@ -1,6 +1,3 @@
-/**
- * Created by dat13ebj on 3/31/14.
- */
 public class BicycleGarage {
     public BicycleGarage() {
         BicycleGarageManager manager = new BicycleGarageManager();
