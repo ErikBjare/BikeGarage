@@ -29,4 +29,8 @@ public class BikeOwner {
 		bikes = null;
 	}
 	
+	public String toString(){
+		return ssn;
+	}
+	
 }

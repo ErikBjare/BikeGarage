@@ -13,7 +13,14 @@ public class Bike {
 		
 	}
 	public void remove(){
-		// ToDo	
+		//TODO	
 	}	
 	
+	public String toString(){
+		return id;
+	}
+	
+	public BikeOwner getOwner(){
+		return owner;
+	}
 }

@@ -1,6 +1,7 @@
 package bomsGUI;
 
 import javax.swing.*;
+
 import java.awt.event.*;
 
 
@@ -16,7 +17,10 @@ public class searchButton extends JButton implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e){
 		System.out.println("Knappen fungerar");
-		//ToDo
+		String ssnOrName = JOptionPane
+				.showInputDialog("Enter SSN or name of the bike owner");
+		
+		//TODO
 	}
 
 }
