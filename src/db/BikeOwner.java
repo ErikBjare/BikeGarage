@@ -1,7 +1,11 @@
+package db;
+
+import db.Bike;
+
 import java.util.ArrayList;
 
 
-public class BikeOwner {
+public class BikeOwner extends Model {
 	String name;
 	String ssn;
 	String email;
@@ -9,11 +13,11 @@ public class BikeOwner {
 	String pin;
 	
 	public BikeOwner(String name, String ssn, String email){
+        super();
 		this.name = name;
 		this.ssn = ssn;
 		this.email = email;
-		bikes = new ArrayList<Bike>();
-		//ToDo: skicka med boms i konstruktorn?
+		bikes = new ArrayList<>();
 		//pin = boms.generatePIN();
 		
 	}
