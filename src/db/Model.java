@@ -1,15 +1,16 @@
 package db;
 
 public abstract class Model {
-    private static DatabaseManager dbm = DatabaseManager.getDBM();
-    private int id;
+    protected static DatabaseManager dbm = DatabaseManager.getDBM();
+    protected int id;
+    public String modelName;
 
-
-    public Model() {
-        this.id = dbm.newID(this);
-        if(dbm.hasModel(this)) {
+    public Model(String modelName) {
+        this.modelName = modelName;
+        if(!dbm.hasModel(this)) {
             dbm.registerModel(this);
         }
+        this.id = dbm.newID(this);
     }
 
     public void save() {
@@ -19,9 +20,5 @@ public abstract class Model {
     public void remove(){
         dbm.remove(this);
     }
-
-    public String getModelName() {
-        return this.getClass().getName();
-    }
-
 }
+

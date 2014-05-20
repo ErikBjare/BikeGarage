@@ -6,18 +6,21 @@ import java.util.ArrayList;
 
 
 public class BikeOwner extends Model {
-	String name;
-	String ssn;
-	String email;
-	ArrayList<Bike> bikes;
-	String pin;
-	
+    private static String modelName = "BikeOwner";
+
+    private String name;
+	private String ssn;
+	private String email;
+	private ArrayList<Bike> bikes;
+	private String pin;
+
+
 	public BikeOwner(String name, String ssn, String email){
-        super();
+        super(modelName);
 		this.name = name;
 		this.ssn = ssn;
 		this.email = email;
-		bikes = new ArrayList<>();
+		bikes = new ArrayList<Bike>();
 		//pin = boms.generatePIN();
 		
 	}
@@ -29,10 +32,26 @@ public class BikeOwner extends Model {
 	public void removeBike(Bike bike){
 		bikes.remove(bike);
 	}
+
 	public void removeAllBikes(){
-		bikes = null;
+		bikes.clear();
 	}
-	
+
+    public String getName() {
+        return name;
+    }
+
+    public static BikeOwner getByName(String name) {
+        for(Model b : dbm.getTable(modelName)) {
+            BikeOwner bikeowner = (BikeOwner)b;
+            System.out.println(bikeowner.getName());
+            if(name.equals(bikeowner.getName())) {
+                return bikeowner;
+            }
+        }
+        return null;
+    }
+
 	public String toString(){
 		return ssn;
 	}
