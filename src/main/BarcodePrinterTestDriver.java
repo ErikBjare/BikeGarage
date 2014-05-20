@@ -1,3 +1,4 @@
+package main;
 import javax.swing.*;
 
 /**
@@ -5,7 +6,7 @@ import javax.swing.*;
  * It can be used when BicycleGarageManager is tested.
  * 
  * @version 1.1
- * @author Martin Höst 
+ * @author Martin Hï¿½st 
  */
 public class BarcodePrinterTestDriver implements BarcodePrinter {
 

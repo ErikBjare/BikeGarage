@@ -1,8 +1,8 @@
+package main;
 import java.util.Date;
 
 public class BicycleGarageManager {
 
-    BarcodePrinter printer;
     ElectronicLock entryLock;
     ElectronicLock exitLock;
     PinCodeTerminal terminal;
@@ -10,13 +10,6 @@ public class BicycleGarageManager {
     String enteredPin = "";
     Date beganEntering = null;
     
-    public BicycleGarageManager(){
-    	printer = new BarcodePrinterTestDriver();
-    	entryLock = new ElectronicLockTestDriver("Entry");
-    	exitLock = new ElectronicLockTestDriver("Exit");
-    	terminal = new PinCodeTerminalTestDriver();
-    	
-    }
 
     /* Will be called when a user has pressed a key at the
      * keypad at the entry door. The following characters could be
@@ -68,9 +61,8 @@ public class BicycleGarageManager {
     /* Register hardware so that BicycleGarageManager
      * knows which drivers to access.
      */
-    public void registerHardwareDrivers(BarcodePrinter printer, ElectronicLock entryLock,
-                                        ElectronicLock exitLock, PinCodeTerminal terminal) {
-        this.printer = printer;
+    public void registerHardwareDrivers(ElectronicLock entryLock, ElectronicLock exitLock,
+                                        PinCodeTerminal terminal) {
         this.entryLock = entryLock;
         this.exitLock = exitLock;
         this.terminal = terminal;

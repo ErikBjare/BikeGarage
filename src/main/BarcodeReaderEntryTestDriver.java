@@ -1,10 +1,11 @@
+package main;
 
 /**
  * This class simulates a bar code reader at the entry door. 
  * It can be used when BicycleGarageManager is tested.
  * 
  * @version 1.0
- * @author Martin Höst 
+ * @author Martin Hï¿½st 
  */
 public class BarcodeReaderEntryTestDriver extends BarcodeReaderTestDriver {
 	

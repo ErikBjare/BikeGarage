@@ -1,3 +1,4 @@
+package main;
 
 /**
  * This class simulates a bar code reader at the exit door. 

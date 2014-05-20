@@ -1,3 +1,4 @@
+package main;
 public class BicycleGarage {
     public BicycleGarage() {
         BicycleGarageManager manager = new BicycleGarageManager();
@@ -5,7 +6,7 @@ public class BicycleGarage {
         ElectronicLock exitLock = new ElectronicLockTestDriver("Exit lock");
         BarcodePrinter printer = new BarcodePrinterTestDriver();
         PinCodeTerminal terminal = new PinCodeTerminalTestDriver();
-        manager.registerHardwareDrivers(printer, entryLock, exitLock, terminal);
+        manager.registerHardwareDrivers(entryLock, exitLock, terminal);
         BarcodeReader readerEntry = new BarcodeReaderEntryTestDriver();
         BarcodeReader readerExit = new BarcodeReaderExitTestDriver();
         readerEntry.register(manager);

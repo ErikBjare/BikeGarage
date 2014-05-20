@@ -4,15 +4,15 @@ package bomsGUI;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.*;
-import (default package).BicycleGarageManager;
+import main.BicycleGarageManager;
 
-public class BomsView<BicycleGarageManager> {
+public class BomsView{
 
 	private ButtonPanel buttonPanel;
 	private JTextArea messageArea;
 	private BicycleGarageManager bicycleGarageManager;
 
-	public BomsView(String title, BicycleGarageManager bicycleGaageManager) {
+	public BomsView(String title, BicycleGarageManager bicycleGarageManager) {
 		this.bicycleGarageManager = bicycleGarageManager;
 		
 		JFrame frame = new JFrame(title);
