@@ -1,7 +1,10 @@
 package bomsGUI;
 
+
 import javax.swing.*;
+
 import java.awt.event.*;
+import java.util.ArrayList;
 
 
 public class CheckedInButton extends JButton implements ActionListener {
@@ -16,7 +19,14 @@ public class CheckedInButton extends JButton implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e){
 		System.out.println("Knappen fungerar");
-		//TODO
+//		ArrayList checkedInBikes = getCheckedInBikes();
+		
+		view.setText("korb");
+		
 	}
+	
+//	public ArrayList getCheckedInBikes(){
+//		
+//	}
 
 }

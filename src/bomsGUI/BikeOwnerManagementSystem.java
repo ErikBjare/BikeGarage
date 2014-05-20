@@ -1,5 +1,5 @@
-package main;
-import bomsGUI.BomsView;
+package bomsGUI;
+import main.BarcodePrinterTestDriver;
 
 
 public class BikeOwnerManagementSystem {

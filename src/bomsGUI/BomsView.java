@@ -33,4 +33,8 @@ public class BomsView{
 		frame.setVisible(true);
 
 	}
+	
+	public void setText(String s){
+		messageArea.setText(s);
+	}
 }
