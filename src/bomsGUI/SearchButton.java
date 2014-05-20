@@ -16,7 +16,7 @@ public class SearchButton extends JButton implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent e){
-		System.out.println("Knappen fun2gerar");
+		System.out.println("Knappen fungerar");
 		String ssnOrName = JOptionPane
 				.showInputDialog("Enter SSN or name of the bike owner");
 		

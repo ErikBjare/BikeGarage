@@ -21,6 +21,7 @@ public class RemoveButton extends JButton implements ActionListener {
 		// TODO: Hur tittar man om ssn eller namn finns i databasen? (1)
 		// TODO: Ta bort BikeOwner (2) eller Bike (3)
 		// TODO: Få upp cykelägerns (BikeOwner) cyklar (4)
+		
 		if (ssnOrName == null) {
 			return;
 		} else if (ssnOrName.equals("Filip") || ssnOrName.equals("01")) {
