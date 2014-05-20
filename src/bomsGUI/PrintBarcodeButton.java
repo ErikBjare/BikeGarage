@@ -4,14 +4,14 @@ import javax.swing.*;
 import java.awt.event.*;
 
 
-public class logOutButton extends JButton implements ActionListener {
-	private bomsView view;
+public class PrintBarcodeButton extends JButton implements ActionListener {
+	private BomsView view;
 	
-	public logOutButton(bomsView view) {
-		super("Log Out");
+	public PrintBarcodeButton(BomsView view) {
+		super("Print Barcode");
 		this.view = view;
 		addActionListener(this);
-		setToolTipText("Log out.");
+		setToolTipText("Prints a barcode.");
 	}
 	
 	public void actionPerformed(ActionEvent e){

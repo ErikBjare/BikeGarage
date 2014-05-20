@@ -1,16 +1,20 @@
 package bomsGUI;
 
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-
 import javax.swing.*;
+import (default package).BicycleGarageManager;
 
-public class bomsView {
+public class BomsView<BicycleGarageManager> {
 
 	private ButtonPanel buttonPanel;
 	private JTextArea messageArea;
+	private BicycleGarageManager bicycleGarageManager;
 
-	public bomsView(String title) {
+	public BomsView(String title, BicycleGarageManager bicycleGaageManager) {
+		this.bicycleGarageManager = bicycleGarageManager;
+		
 		JFrame frame = new JFrame(title);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

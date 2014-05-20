@@ -4,10 +4,10 @@ import javax.swing.*;
 
 import java.awt.event.*;
 
-public class removeButton extends JButton implements ActionListener {
-	private bomsView view;
+public class RemoveButton extends JButton implements ActionListener {
+	private BomsView view;
 
-	public removeButton(bomsView view) {
+	public RemoveButton(BomsView view) {
 		super("Remove");
 		this.view = view;
 		addActionListener(this);

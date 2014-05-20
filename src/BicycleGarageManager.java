@@ -9,6 +9,14 @@ public class BicycleGarageManager {
 
     String enteredPin = "";
     Date beganEntering = null;
+    
+    public BicycleGarageManager(){
+    	printer = new BarcodePrinterTestDriver();
+    	entryLock = new ElectronicLockTestDriver("Entry");
+    	exitLock = new ElectronicLockTestDriver("Exit");
+    	terminal = new PinCodeTerminalTestDriver();
+    	
+    }
 
     /* Will be called when a user has pressed a key at the
      * keypad at the entry door. The following characters could be

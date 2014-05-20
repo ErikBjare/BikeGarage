@@ -5,15 +5,14 @@ import javax.swing.*;
 
 public class ButtonPanel extends JPanel {
 
-	public ButtonPanel(bomsView view) {
-//		setLayout(new FlowLayout(FlowLayout.TOP));
+	public ButtonPanel(BomsView view) {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-		add(new addButton(view));
-		add(new removeButton(view));
-		add(new searchButton(view));
-		add(new printBarcodeButton(view));
-		add(new checkedInButton(view));
-		add(new logOutButton(view));
+		add(new AddButton(view));
+		add(new RemoveButton(view));
+		add(new SearchButton(view));
+		add(new PrintBarcodeButton(view));
+		add(new CheckedInButton(view));
+		add(new LogOutButton(view));
 	}
 
 }

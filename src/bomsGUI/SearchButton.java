@@ -5,10 +5,10 @@ import javax.swing.*;
 import java.awt.event.*;
 
 
-public class searchButton extends JButton implements ActionListener {
-	private bomsView view;
+public class SearchButton extends JButton implements ActionListener {
+	private BomsView view;
 	
-	public searchButton(bomsView view) {
+	public SearchButton(BomsView view) {
 		super("Search");
 		this.view = view;
 		addActionListener(this);
@@ -16,11 +16,12 @@ public class searchButton extends JButton implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent e){
-		System.out.println("Knappen fungerar");
+		System.out.println("Knappen fun2gerar");
 		String ssnOrName = JOptionPane
 				.showInputDialog("Enter SSN or name of the bike owner");
 		
 		//TODO
 	}
+	
 
 }

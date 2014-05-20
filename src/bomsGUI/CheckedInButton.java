@@ -4,10 +4,10 @@ import javax.swing.*;
 import java.awt.event.*;
 
 
-public class checkedInButton extends JButton implements ActionListener {
-	private bomsView view;
+public class CheckedInButton extends JButton implements ActionListener {
+	private BomsView view;
 	
-	public checkedInButton(bomsView view) {
+	public CheckedInButton(BomsView view) {
 		super("Checked In");
 		this.view = view;
 		addActionListener(this);
@@ -16,7 +16,7 @@ public class checkedInButton extends JButton implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e){
 		System.out.println("Knappen fungerar");
-		//ToDo
+		//TODO
 	}
 
 }

@@ -4,10 +4,10 @@ import javax.swing.*;
 import java.awt.event.*;
 
 
-public class addButton extends JButton implements ActionListener {
-	private bomsView view;
+public class AddButton extends JButton implements ActionListener {
+	private BomsView view;
 	
-	public addButton(bomsView view) {
+	public AddButton(BomsView view) {
 		super("Add");
 		this.view = view;
 		addActionListener(this);
