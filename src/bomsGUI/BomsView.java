@@ -4,22 +4,21 @@ package bomsGUI;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.*;
-import main.BarcodePrinterTestDriver;
 
 public class BomsView{
 
 	private ButtonPanel buttonPanel;
 	private JTextArea messageArea;
-	private BarcodePrinterTestDriver printer;
+	protected BikeOwnerManagementSystem boms;
 
-	public BomsView(String title, BarcodePrinterTestDriver printer) {
-
-		this.printer = printer;
+	public BomsView(String title, BikeOwnerManagementSystem boms) {
+		
+		this.boms = boms;
 		
 		JFrame frame = new JFrame(title);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		buttonPanel = new ButtonPanel(this, printer);
+		buttonPanel = new ButtonPanel(this);
 		JPanel messagePanel = new JPanel();
 
 		messageArea = new JTextArea(20, 100);

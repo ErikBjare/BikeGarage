@@ -1,7 +1,6 @@
 package bomsGUI;
 
 import javax.swing.*;
-
 import java.awt.event.*;
 
 public class AddButton extends JButton implements ActionListener {
@@ -32,11 +31,19 @@ public class AddButton extends JButton implements ActionListener {
 					null, options2, options2[0]);
 			if (m == 0) {
 				// bikeOwner.add(new Bike());
+				//TODO generate barcode
+				view.boms.printBarcode("generateBarcode");
 				JOptionPane
 						.showMessageDialog(
 								null,
 								"Bike succesfully added." );
 			}
+		}else{
+			Object[] options2 = { "Yes", "No" };
+			
+			int n =JOptionPane.showOptionDialog(null,"Do you wish to register a new bike owner with the entered SSN: " + ssn + "?", "Adding a bike owner",
+					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
+					null, options2, options2[0]);
 		}
 
 		// TODO

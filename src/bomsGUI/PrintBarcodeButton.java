@@ -10,12 +10,13 @@ public class PrintBarcodeButton extends JButton implements ActionListener {
 	public PrintBarcodeButton(BomsView view) {
 		super("Print Barcode");
 		this.view = view;
+		this.setEnabled(false);
 		addActionListener(this);
 		setToolTipText("Prints a barcode.");
 	}
 	
 	public void actionPerformed(ActionEvent e){
-		System.out.println("Knappen fungerar");
+		view.boms.printBarcode("generateBarcode");
 		//ToDo
 	}
 
