@@ -5,6 +5,9 @@ import java.util.Iterator;
 
 public class DatabaseManager {
     private static DatabaseManager dbm = new DatabaseManager();
+    
+    private static final String USERNAME = "OLOF";
+    private static final String PASSWORD = "YOLOF";
 
     private HashMap<String, Table> tables;
 
@@ -47,6 +50,14 @@ public class DatabaseManager {
         int max_id = tables.get(m.modelName).maxID();
         return max_id+1;
     }
+
+	public static String getPassword() {
+		return PASSWORD;
+	}
+
+	public static String getUsername() {
+		return USERNAME;
+	}
 }
 
 class Table implements Iterable<Model>{

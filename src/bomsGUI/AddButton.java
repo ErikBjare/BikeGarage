@@ -1,6 +1,7 @@
 package bomsGUI;
 
 import javax.swing.*;
+
 import java.awt.event.*;
 
 public class AddButton extends JButton implements ActionListener {
@@ -21,7 +22,7 @@ public class AddButton extends JButton implements ActionListener {
 
 		String ssn = JOptionPane.showInputDialog("Enter SSN of the bike owner");
 
-		if (ssn == null) {
+		if (ssn == null || ssn.length() == 0) {
 			return;
 		} else if (ssn.equals("Filip") || ssn.equals("01")) {
 			Object[] options2 = { "Yes", "No" };
@@ -44,6 +45,9 @@ public class AddButton extends JButton implements ActionListener {
 			int n =JOptionPane.showOptionDialog(null,"Do you wish to register a new bike owner with the entered SSN: " + ssn + "?", "Adding a bike owner",
 					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
 					null, options2, options2[0]);
+			if(n == 0){
+				new RegistrationForm("Bike owner registation", ssn);
+			}
 		}
 
 		// TODO

@@ -9,8 +9,7 @@ public class BikeOwnerManagementSystem {
 	
 	public BikeOwnerManagementSystem(){
 		this.printer = new BarcodePrinterTestDriver();
-		String title = "Bike Owner Management System";
-		new BomsView(title, this);
+		new LoginView("Login screen", this);
 	}
 	
 	public static void main(String[] args) {
