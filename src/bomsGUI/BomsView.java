@@ -9,6 +9,7 @@ public class BomsView{
 
 	private ButtonPanel buttonPanel;
 	private JTextArea messageArea;
+	protected SearchSelectionPanel searchSelectionPanel;
 	protected BikeOwnerManagementSystem boms;
 
 	public BomsView(String title, BikeOwnerManagementSystem boms) {
@@ -19,14 +20,18 @@ public class BomsView{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		buttonPanel = new ButtonPanel(this);
-		JPanel messagePanel = new JPanel();
+		
+		searchSelectionPanel = new SearchSelectionPanel(this);
 
+		JPanel messagePanel = new JPanel();
 		messageArea = new JTextArea(20, 100);
 		messageArea.setEditable(false);
 		messagePanel.add(new JScrollPane(messageArea));
-
+		
 		frame.add(buttonPanel, BorderLayout.WEST);
+		frame.add(searchSelectionPanel, BorderLayout.SOUTH);
 		frame.add(messagePanel, BorderLayout.CENTER);
+		
 
 		frame.pack();
 		frame.setVisible(true);

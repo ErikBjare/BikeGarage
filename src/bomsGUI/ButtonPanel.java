@@ -13,6 +13,7 @@ public class ButtonPanel extends JPanel {
 		add(new PrintBarcodeButton(view));
 		add(new CheckedInButton(view));
 		add(new LogOutButton(view));
+		
 	}
 
 }
