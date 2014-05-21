@@ -26,7 +26,10 @@ public class SearchButton extends JButton implements ActionListener {
 		if (ssnOrName == null) {
 			return;
 		} else if(ssnOrName.equals("Filip") || ssnOrName.equals("01") ) {
-			view.searchSelectionPanel.showSearchResults(data);
+			JFrame f = new JFrame();
+			f.add(new JScrollPane(new JList(data)));
+			f.setSize(100,100);
+			f.setVisible(true);
 		}
 		
 		//TODO
