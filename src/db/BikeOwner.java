@@ -40,6 +40,10 @@ public class BikeOwner extends Model {
     public String getName() {
         return name;
     }
+    
+    public ArrayList<Bike> getBikes(){
+    	return bikes;
+    }
 
     public static BikeOwner getByName(String name) {
         for(Model b : dbm.getTable(modelName)) {
