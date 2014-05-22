@@ -35,7 +35,7 @@ public class BicycleGarageManager {
 
     public void authenticateBikeOwner(String pin) {
         System.out.println("Someone ran authenticateBikeOwner! pin: " + pin);
-        // ToDo: Authenticate bike owner from DB
+       // TODO: Authenticate bike owner from DB
     }
 
     /* Will be called when a user has used the bar code
@@ -45,7 +45,7 @@ public class BicycleGarageManager {
     public void entryBarcode(String code) {
         System.out.println("Bike with code " + code + " entered");
 
-        // ToDo: If barcode belongs to bike which has access to the garage open entry lock
+       // TODO: If barcode belongs to bike which has access to the garage open entry lock
     }
 
     /* Will be called when a user has used the bar code
@@ -55,7 +55,7 @@ public class BicycleGarageManager {
     public void exitBarcode(String code) {
         System.out.println("Bike with code " + code + " exited");
 
-        // ToDo: If barcode belongs to bike in garage open exit lock
+       // TODO: If barcode belongs to bike in garage open exit lock
     }
 
     /* Register hardware so that BicycleGarageManager

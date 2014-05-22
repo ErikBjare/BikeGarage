@@ -28,7 +28,17 @@ public class AddButton extends JButton implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		String ssn = JOptionPane.showInputDialog("Enter SSN of the bike owner");
-        BikeOwner bikeOwner = BikeOwner.getBySSN(ssn);
+		double social;
+		  try {
+			  social = Double.parseDouble(ssn);
+          } catch (NumberFormatException nfe) {
+             JOptionPane.showMessageDialog(null,"Input must be a number.");
+             return;
+          }
+		  
+		  
+		BikeOwner bikeOwner = BikeOwner.getBySSN(ssn);
+        
 
         Object[] options2 = { "Yes", "No" };
 
