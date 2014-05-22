@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 public class Table implements Iterable<Model>, Serializable {
-    private String modelName;
+    public String modelName;
     private HashMap<String, Model> rows;
 
     // TODO: Support indexing?

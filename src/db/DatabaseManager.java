@@ -49,6 +49,7 @@ public class DatabaseManager implements Serializable {
             System.out.println(e);
         }
         System.out.println("Saved database to file");
+        dbm.printTables();
     }
 
     public void loadFromFile() {
@@ -62,6 +63,13 @@ public class DatabaseManager implements Serializable {
             e.printStackTrace();
         }
         System.out.println("Loaded database from file");
+        dbm.printTables();
+    }
+
+    public void printTables() {
+        for(Table t : tables.values()) {
+            System.out.println(t.modelName + " has " + t.size() + " entries");
+        }
     }
 
     public void save(Model m) {

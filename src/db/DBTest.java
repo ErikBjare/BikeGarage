@@ -29,6 +29,7 @@ public class DBTest extends TestCase {
 
     public void testSave() {
         dbm.saveToFile();
+        //assertNotNull(BikeOwner);
         dbm.loadFromFile();
     }
 }
