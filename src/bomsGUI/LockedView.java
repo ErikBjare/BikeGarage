@@ -27,7 +27,7 @@ public class LockedView{
 		
 		setTime();
 	}
-	// Gives the database a time locked
+	// Gives the database a time which shows when the loginbutton can be unlocked
 	public void setTime(){
     	DatabaseManager.setLockedTime(cal); 
      }
