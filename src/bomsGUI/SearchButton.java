@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import db.Bike;
 import db.BikeOwner;
+import db.DatabaseManager;
 
 import java.awt.event.*;
 
@@ -18,9 +19,25 @@ public class SearchButton extends JButton implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		
-		BikeOwner[] bikeOwners = new BikeOwner[2];
-		
+        String ssnOrName = JOptionPane
+                .showInputDialog("Enter SSN or name of the bike owner");
+
+        if (ssnOrName == null) {
+            return;
+        }
+
+        BikeOwner bikeOwner = BikeOwner.getByName(ssnOrName);
+        System.out.println(bikeOwner);
+
+        if (bikeOwner == null) {
+            System.out.println("Could not find BikeOwner");
+            return;
+        }
+
+        BikeOwner[] bikeOwners = new BikeOwner[1];
+        bikeOwners[0] = bikeOwner;
+
+        /**
 		BikeOwner bertil = new BikeOwner("Bertil", "89", "lele@lala");
 		bertil.addBike(new Bike(bertil));
 		bertil.addBike(new Bike(bertil));
@@ -31,21 +48,13 @@ public class SearchButton extends JButton implements ActionListener {
 		merta.addBike(new Bike(bertil));
 		merta.addBike(new Bike(bertil));
 		merta.addBike(new Bike(bertil));
-		
-		
+
 		bikeOwners[0] = bertil;
 		bikeOwners[1] = merta;
-		
-		String ssnOrName = JOptionPane
-				.showInputDialog("Enter SSN or name of the bike owner");
-		if (ssnOrName == null) {
-			return;
 
-		} else if (ssnOrName.equals("Filip") || ssnOrName.equals("01")) {
+         */
 
-			SearchResultFrame srf = new SearchResultFrame(bikeOwners, view);
-			
-		}
+    	SearchResultFrame srf = new SearchResultFrame(bikeOwners, view);
 	}
 
 }

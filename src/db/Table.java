@@ -16,6 +16,7 @@ public class Table implements Iterable<Model> {
 
     public void save(Model m) {
         rows.put(m.id, m);
+        System.out.println("Saved: " + m.toString());
     }
 
     public void remove(Model m) {
@@ -23,10 +24,14 @@ public class Table implements Iterable<Model> {
     }
 
     public int maxID() {
+        System.out.println("ASD");
         int max = 0;
         for (String is : rows.keySet()) {
             int i = Integer.getInteger(is);
-            if (i > max) max = i;
+            if (i > max) {
+                max = i;
+                System.out.println(max);
+            }
         }
         return max;
     }

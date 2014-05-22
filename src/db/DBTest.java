@@ -7,7 +7,7 @@ public class DBTest extends TestCase {
 
     @org.junit.Before
     public void setUp() throws Exception {
-        this.dbm = new DatabaseManager();
+        this.dbm = DatabaseManager.getDBM();
     }
 
     @org.junit.After
@@ -16,11 +16,16 @@ public class DBTest extends TestCase {
     }
 
     public void testBikeOwner() {
+        System.out.println(dbm.getTable("BikeOwner"));
+
         BikeOwner bikeowner = new BikeOwner("Erik", "94XXXX-XXXX", "erik@example.com");
         bikeowner.addBike(new Bike(bikeowner));
 
         bikeowner.save();
         assertNotNull(BikeOwner.getByName("Erik"));
-    }
 
+        for(Model m : dbm.getTable("BikeOwner")) {
+            System.out.println(m);
+        }
+    }
 }

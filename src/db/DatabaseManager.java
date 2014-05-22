@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 public class DatabaseManager {
-	private static DatabaseManager dbm = getDBM();
+	public static final DatabaseManager dbm = new DatabaseManager();
 
 	private static final String USERNAME = "OLOF";
 	private static final String PASSWORD = "YOLOF";
@@ -16,6 +16,7 @@ public class DatabaseManager {
 
 	public DatabaseManager() {
 		tables = new HashMap<String, Table>();
+        System.out.println("DB INIT");
         for(String modelName : new String[]{BikeOwner.modelName, Bike.modelName}) {
             registerModel(modelName);
         }
@@ -23,7 +24,6 @@ public class DatabaseManager {
 	}
 
 	public static DatabaseManager getDBM() {
-        if(dbm == null) dbm = new DatabaseManager();
 		return dbm;
 	}
 
@@ -64,8 +64,8 @@ public class DatabaseManager {
         registerModel(m.modelName);
     }
 
-	public int newID(Model m) {
-		int max_id = tables.get(m.modelName).maxID();
+	public int newID(String modelName) {
+		int max_id = tables.get(modelName).maxID();
 		return max_id + 1;
 	}
 

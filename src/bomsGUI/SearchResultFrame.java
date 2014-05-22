@@ -44,9 +44,7 @@ public class SearchResultFrame {
 		
 		for (int i = 0 ; i < bikes.size(); i++){
 			bikeArray[i] = bikes.get(i).toString();
-			
 		}
-		
 
 		JFrame f = new JFrame();
 		final JList list = new JList<String>(bikeArray);

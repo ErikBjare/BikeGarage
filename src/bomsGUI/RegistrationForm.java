@@ -49,8 +49,11 @@ public class RegistrationForm extends JFrame {
 				String name = text1.getText();
 				String email = text2.getText();
 
-				BikeOwner toBeAdded = new BikeOwner(name, getSsn(), email);
-				toBeAdded.addBike(new Bike(toBeAdded));
+				BikeOwner bikeOwner = new BikeOwner(name, getSsn(), email);
+				bikeOwner.addBike();
+                bikeOwner.save();
+
+
 				// TODO
 				// Save bikeowner & bike
 				dispose();

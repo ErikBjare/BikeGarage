@@ -29,7 +29,7 @@ public class Bike extends Model {
     }
 
     public static Bike getByBarcode(String barcode) {
-        for(Model b : dbm.getTable(modelName)) {
+        for(Model b : getTable()) {
             Bike bike = (Bike)b;
             if(barcode.equals(bike.getBarcode())) {
                 return bike;
@@ -41,7 +41,7 @@ public class Bike extends Model {
     public static ArrayList<Bike> getCheckedIn(){
     	ArrayList<Bike> checkedInBikes = new ArrayList<Bike>();
     	
-        for(Model b : dbm.getTable(modelName)) {
+        for(Model b : getTable()) {
         	Bike bike = (Bike)b;
             if(bike.checkedIn) {
             	checkedInBikes.add(bike);
@@ -60,5 +60,9 @@ public class Bike extends Model {
     
     public void setCheckedIn(){
     	checkedIn = true;
+    }
+
+    public static Table getTable() {
+        return DatabaseManager.dbm.getTable(modelName);
     }
 }

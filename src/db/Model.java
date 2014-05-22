@@ -1,23 +1,24 @@
 package db;
 
+import javax.xml.crypto.Data;
+
 public abstract class Model {
-	protected static DatabaseManager dbm = DatabaseManager.getDBM();
 	protected String id;
 	public String modelName;
 
 	public Model(String modelName) {
+        System.out.println(DatabaseManager.dbm);
 		this.modelName = modelName;
-		if (!dbm.hasModel(this)) {
-			dbm.registerModel(this);
-		}
-		this.id = Integer.toString(dbm.newID(this));
+        System.out.println(DatabaseManager.dbm.newID(modelName));
+		this.id = Integer.toString(DatabaseManager.dbm.newID(modelName));
 	}
 
 	public void save() {
-		dbm.save(this);
+		DatabaseManager.dbm.save(this);
 	}
 
 	public void remove() {
-		dbm.remove(this);
+		DatabaseManager.dbm.remove(this);
 	}
+
 }

@@ -2,6 +2,7 @@ package db;
 
 import db.Bike;
 
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 
 
@@ -55,7 +56,7 @@ public class BikeOwner extends Model {
     }
 
     public static BikeOwner getBySSN(String ssn) {
-        for(Model b : dbm.getTable(modelName)) {
+        for(Model b : DatabaseManager.dbm.getTable(modelName)) {
             BikeOwner bikeowner = (BikeOwner)b;
             System.out.println(bikeowner.getSSN());
             if(ssn.equals(bikeowner.getSSN())) {
@@ -66,7 +67,7 @@ public class BikeOwner extends Model {
     }
 
     public static BikeOwner getByName(String name) {
-        for(Model b : dbm.getTable(modelName)) {
+        for(Model b : DatabaseManager.dbm.getTable(modelName)) {
             BikeOwner bikeowner = (BikeOwner)b;
             System.out.println(bikeowner.getName());
             if(name.equals(bikeowner.getName())) {
@@ -79,5 +80,9 @@ public class BikeOwner extends Model {
 	public String toString(){
 		return "{BIKEOWNER | name: " + name + ", ssn: " + ssn + "}";
 	}
-	
+
+    public static Table getTable() {
+        return DatabaseManager.dbm.getTable(modelName);
+    }
+
 }
