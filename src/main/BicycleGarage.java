@@ -1,5 +1,6 @@
 package main;
 public class BicycleGarage {
+	
     public BicycleGarage() {
         BicycleGarageManager manager = new BicycleGarageManager();
         ElectronicLock entryLock = new ElectronicLockTestDriver("Entry lock");
