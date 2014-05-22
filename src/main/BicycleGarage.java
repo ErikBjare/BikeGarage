@@ -5,7 +5,6 @@ public class BicycleGarage {
         BicycleGarageManager manager = new BicycleGarageManager();
         ElectronicLock entryLock = new ElectronicLockTestDriver("Entry lock");
         ElectronicLock exitLock = new ElectronicLockTestDriver("Exit lock");
-        BarcodePrinter printer = new BarcodePrinterTestDriver();
         PinCodeTerminal terminal = new PinCodeTerminalTestDriver();
         manager.registerHardwareDrivers(entryLock, exitLock, terminal);
         BarcodeReader readerEntry = new BarcodeReaderEntryTestDriver();

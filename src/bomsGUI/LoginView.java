@@ -83,7 +83,7 @@ public class LoginView extends JFrame {
 				}
 
 				Calendar cal = DatabaseManager.getLockedTime();
-				// Calendar cal1 = Calendar.getInstance();
+				
 
 				while (systemIsLocked()) {
 
