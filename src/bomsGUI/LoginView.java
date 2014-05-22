@@ -64,7 +64,6 @@ public class LoginView extends JFrame {
 						
 //					}
 				} else {
-					
 					pass1.setText("");
 				}
 
