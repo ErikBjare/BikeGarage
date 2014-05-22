@@ -2,12 +2,15 @@ package bomsGUI;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
-public class BomsView {
+public class BomsView extends JFrame {
 
-	private JFrame frame;
-	protected ButtonPanel buttonPanel;
+	// private JFrame frame;
+	private ButtonPanel buttonPanel;
 	private JTextArea messageArea;
 	protected BikeOwnerManagementSystem boms;
 
@@ -15,8 +18,8 @@ public class BomsView {
 
 		this.boms = boms;
 
-		JFrame frame = new JFrame(title);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// JFrame frame = new JFrame(title);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		buttonPanel = new ButtonPanel(this);
 
@@ -25,20 +28,46 @@ public class BomsView {
 		messageArea.setEditable(false);
 		messagePanel.add(new JScrollPane(messageArea));
 
-		frame.add(buttonPanel, BorderLayout.WEST);
-		frame.add(messagePanel, BorderLayout.CENTER);
+		add(buttonPanel, BorderLayout.WEST);
 
-		frame.pack();
-		frame.setVisible(true);
+		add(messagePanel, BorderLayout.CENTER);
+		buttonPanel.add(new LogOutButton(this));
+		pack();
+		setVisible(true);
 
 	}
 
 	public void setText(String s) {
 		messageArea.setText(s);
 	}
-	
-	public void dispose(){
-		frame.dispose();
+
+	// public void dispose(){
+	// frame.dispose();
+	// }
+	public class LogOutButton extends JButton implements ActionListener {
+		private BomsView view;
+
+		public LogOutButton(BomsView view) {
+			super("Log Out");
+			this.view = view;
+			addActionListener(this);
+			setToolTipText("Log out.");
+		}
+
+		public void actionPerformed(ActionEvent e) {
+
+			Object[] options2 = { "Yes", "No" };
+			int m = JOptionPane.showOptionDialog(null,
+					"Do you want to log out?",  "Log Out",
+					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
+					null, options2, options2[0]);
+			if (m == 0) {
+				new LoginView("Login screen", view.boms);
+				view.dispose();
+			}
+
+		}
+
 	}
-	
+
 }
