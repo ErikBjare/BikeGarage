@@ -21,7 +21,7 @@ public class LockedView extends JFrame{
 		JPanel messagePanel = new JPanel();
 		messageArea = new JTextArea(5, 30);
 		messageArea.setEditable(false);
-		messageArea.setText("\nYou entered the wrong login details too many times, try again " + setTime());
+		messageArea.setText("\nYou entered the wrong login details too many times, try again ");
 	
 		
 		messagePanel.add(messageArea);
@@ -36,8 +36,6 @@ public class LockedView extends JFrame{
 		Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.MINUTE, 10);
     	DatabaseManager.setLockedTime(cal);  
-   	
-
 	}
 	
 	

@@ -59,10 +59,10 @@ public class LoginView extends JFrame {
 				} else if (DatabaseManager.wrongLogin() == 9) { // Wrong login
 					loginButton.setEnabled(false);
 					new LockedView("Locked mode");
-					while(DatabaseManager.getLockedTime() == ){
+//					while(DatabaseManager.getLockedTime() == ){
 						
 						
-					}
+//					}
 				} else {
 					
 					pass1.setText("");
