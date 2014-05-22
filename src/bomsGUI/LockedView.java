@@ -5,38 +5,33 @@ import java.util.Calendar;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import db.DatabaseManager;
 
-public class LockedView extends JFrame{
+public class LockedView{
 	
-	private JTextArea messageArea;
-	private JButton refreshButton;
-	public LockedView(String title){
-		super(title);
-		
-		refreshButton = new JButton();
-		JPanel messagePanel = new JPanel();
-		messageArea = new JTextArea(5, 30);
-		messageArea.setEditable(false);
-		messageArea.setText("\nYou entered the wrong login details too many times, try again ");
+	Calendar cal;
+
+	public LockedView() throws InterruptedException{
+			
 	
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+		cal = Calendar.getInstance();
+		cal.add(Calendar.SECOND, 10);
+		String lockedTime = sdf.format(cal.getTime());
 		
-		messagePanel.add(messageArea);
-		add(messagePanel);
+		JOptionPane.showMessageDialog(null,"You entered the login details too many times, the system will be locked until " + lockedTime);
 		
-		pack();
-		setVisible(true);
-		
+		setTime();
 	}
 	// Gives the database a time locked
 	public void setTime(){
-		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.MINUTE, 10);
-    	DatabaseManager.setLockedTime(cal);  
-	}
+    	DatabaseManager.setLockedTime(cal); 
+     }
+	
 	
 	
 
