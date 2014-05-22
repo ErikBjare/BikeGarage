@@ -10,7 +10,7 @@ import javax.swing.*;
 public class BomsView extends JFrame {
 
 	// private JFrame frame;
-	private ButtonPanel buttonPanel;
+	protected ButtonPanel buttonPanel;
 	private JTextArea messageArea;
 	protected BikeOwnerManagementSystem boms;
 

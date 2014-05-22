@@ -1,5 +1,6 @@
 package db;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -9,6 +10,7 @@ public class DatabaseManager {
 	private static final String USERNAME = "OLOF";
 	private static final String PASSWORD = "YOLOF";
 	private static int loginAttempts = 0;
+	private static Calendar cal;
 
 	private HashMap<String, Table> tables;
 
@@ -72,6 +74,12 @@ public class DatabaseManager {
 
 	public static String getUsername() {
 		return USERNAME;
+	}
+	public static void setLockedTime(Calendar cal){
+		DatabaseManager.cal = cal;
+	}
+	public static Calendar getLockedTime(){
+		return cal;
 	}
 
 	/**

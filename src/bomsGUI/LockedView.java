@@ -31,19 +31,13 @@ public class LockedView extends JFrame{
 		setVisible(true);
 		
 	}
-	
+	// Gives the database a time locked
 	public void setTime(){
 		Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.MINUTE, 10);
-    	SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-    	sdf.format(cal.getTime());
-    	
-    	System.out.println(sdf);
-    	
-    	
-//    	String newLoginTime = sdf.format(cal.getTime());
-//    	DatabaseManager.setLockedTime(cal);  	
-//    	return newLoginTime;
+    	DatabaseManager.setLockedTime(cal);  
+   	
+
 	}
 	
 	
