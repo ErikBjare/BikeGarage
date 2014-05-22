@@ -16,8 +16,6 @@ public class DBTest extends TestCase {
     }
 
     public void testBikeOwner() {
-        System.out.println(dbm.getTable("BikeOwner"));
-
         BikeOwner bikeowner = new BikeOwner("Erik", "94XXXX-XXXX", "erik@example.com");
         bikeowner.addBike(new Bike(bikeowner));
 
@@ -27,5 +25,10 @@ public class DBTest extends TestCase {
         for(Model m : dbm.getTable("BikeOwner")) {
             System.out.println(m);
         }
+    }
+
+    public void testSave() {
+        dbm.saveToFile();
+        dbm.loadFromFile();
     }
 }

@@ -1,11 +1,12 @@
 package db;
 
+import java.io.*;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 
-public class DatabaseManager {
-	public static final DatabaseManager dbm = new DatabaseManager();
+public class DatabaseManager implements Serializable {
+	public static DatabaseManager dbm = new DatabaseManager();
 
 	private static final String USERNAME = "OLOF";
 	private static final String PASSWORD = "YOLOF";
@@ -27,7 +28,43 @@ public class DatabaseManager {
 		return dbm;
 	}
 
-	public void save(Model m) {
+    public void saveToFile() {
+        try {
+            // Serialize data object to a file
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("db.ser"));
+            out.writeObject(this);
+            out.close();
+
+            // Serialize data object to a byte array
+            ByteArrayOutputStream bos;
+            bos = new ByteArrayOutputStream();
+            out = new ObjectOutputStream(bos) ;
+            out.writeObject(this);
+            out.close();
+
+            // Get the bytes of the serialized object
+            byte[] buf = bos.toByteArray();
+        } catch (IOException e) {
+            System.out.println("There was an error");
+            System.out.println(e);
+        }
+        System.out.println("Saved database to file");
+    }
+
+    public void loadFromFile() {
+        try{
+            FileInputStream dbm = new FileInputStream("db.ser");
+            ObjectInputStream reader = new ObjectInputStream(dbm);
+            DatabaseManager.dbm = (DatabaseManager) reader.readObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Loaded database from file");
+    }
+
+    public void save(Model m) {
 		tables.get(m.modelName).save(m);
 	}
 

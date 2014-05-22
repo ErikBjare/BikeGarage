@@ -1,9 +1,10 @@
 package db;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Iterator;
 
-public class Table implements Iterable<Model> {
+public class Table implements Iterable<Model>, Serializable {
     private String modelName;
     private HashMap<String, Model> rows;
 
