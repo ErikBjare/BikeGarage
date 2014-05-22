@@ -34,6 +34,8 @@ public class BomsView extends JFrame {
 		buttonPanel.add(new LogOutButton(this));
 		pack();
 		setVisible(true);
+		
+
 
 	}
 

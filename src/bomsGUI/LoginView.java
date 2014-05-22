@@ -18,6 +18,7 @@ public class LoginView extends JFrame {
 	private JPasswordField pass1;
 	private JButton loginButton;
 	private JButton cancelButton;
+	
 
 	public LoginView(String title,
 			final BikeOwnerManagementSystem bikeOwnerManagementSystem) {
@@ -39,6 +40,8 @@ public class LoginView extends JFrame {
 		panel.add(pass1);
 		panel.add(loginButton);
 		panel.add(cancelButton);
+		
+		new LockedView("Locked Mode");
 
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
@@ -53,9 +56,15 @@ public class LoginView extends JFrame {
 					
 					DatabaseManager.correctLogin();
 					dispose();
-				} else if (DatabaseManager.wrongLogin() == 10) {
+				} else if (DatabaseManager.wrongLogin() == 9) { // Wrong login
 					loginButton.setEnabled(false);
+					new LockedView("Locked mode");
+					while(DatabaseManager.getLockedTime() == ){
+						
+						
+					}
 				} else {
+					
 					pass1.setText("");
 				}
 
