@@ -6,7 +6,8 @@ import javax.swing.*;
 
 public class BomsView {
 
-	private ButtonPanel buttonPanel;
+	private JFrame frame;
+	protected ButtonPanel buttonPanel;
 	private JTextArea messageArea;
 	protected BikeOwnerManagementSystem boms;
 
@@ -35,4 +36,9 @@ public class BomsView {
 	public void setText(String s) {
 		messageArea.setText(s);
 	}
+	
+	public void dispose(){
+		frame.dispose();
+	}
+	
 }

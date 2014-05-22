@@ -17,6 +17,7 @@ public class PrintBarcodeButton extends JButton implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e){
 		view.boms.printBarcode("generateBarcode");
+		this.setEnabled(false);
 	}
 
 }

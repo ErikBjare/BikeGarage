@@ -23,10 +23,11 @@ public class SearchResultFrame {
 
 		ListSelectionListener listSelectionListener = new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent listSelectionEvent) {
-
-				SearchResultFrame srf = new SearchResultFrame(
-						((BikeOwner) list.getSelectedValue()).getBikes(), view);
-
+				if (!listSelectionEvent.getValueIsAdjusting()) {
+					SearchResultFrame srf = new SearchResultFrame(
+							((BikeOwner) list.getSelectedValue()).getBikes(),
+							view);
+				}
 			}
 
 		};
@@ -37,22 +38,35 @@ public class SearchResultFrame {
 		f.setVisible(true);
 	}
 
-	public SearchResultFrame(ArrayList<Bike> bikes, BomsView view) {
+	public SearchResultFrame(ArrayList<Bike> bikes, final BomsView view) {
 		
-		String[] lawl = {"01", "02", "03"};
+		String[] bikeArray = new String[bikes.size()];
+		
+		for (int i = 0 ; i < bikes.size(); i++){
+			bikeArray[i] = bikes.get(i).toString();
+			
+		}
+		
 
 		JFrame f = new JFrame();
-		final JList list = new JList(lawl);
+		final JList list = new JList(bikeArray);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 		ListSelectionListener listSelectionListener = new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent listSelectionEvent) {
-
-				System.out.println("YOLOF");
+				if (!listSelectionEvent.getValueIsAdjusting()) {
+					view.buttonPanel.printBarcodeButton.setEnabled(true);
+				}
 			}
 
 		};
 		list.addListSelectionListener(listSelectionListener);
+		
+		f.addWindowListener(new java.awt.event.WindowAdapter() {
+		    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+				view.buttonPanel.printBarcodeButton.setEnabled(false);
+		    }
+		});
 
 		f.add(new JScrollPane(list));
 		f.setSize(200, 500);

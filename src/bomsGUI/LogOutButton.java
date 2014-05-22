@@ -15,8 +15,8 @@ public class LogOutButton extends JButton implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent e){
-		System.out.println("Knappen fungerar");
-		//ToDo
+		LoginView loginView = new LoginView("Login", view.boms);
+		view.dispose();
 	}
 
 }

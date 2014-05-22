@@ -4,52 +4,53 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 public class DatabaseManager {
-    private static DatabaseManager dbm = new DatabaseManager();
-    
-    private static final String USERNAME = "OLOF";
-    private static final String PASSWORD = "YOLOF";
+	private static DatabaseManager dbm = new DatabaseManager();
 
-    private HashMap<String, Table> tables;
+	private static final String USERNAME = "OLOF";
+	private static final String PASSWORD = "YOLOF";
+	private static int loginAttempts = 0;
 
-    public DatabaseManager() {
-        tables = new HashMap<String, Table>();
-        // TODO: Load and save by serializing
-    }
+	private HashMap<String, Table> tables;
 
-    public static DatabaseManager getDBM() {
-        return dbm;
-    }
+	public DatabaseManager() {
+		tables = new HashMap<String, Table>();
+		// TODO: Load and save by serializing
+	}
 
-    public void save(Model m) {
-        tables.get(m.modelName).save(m);
-    }
+	public static DatabaseManager getDBM() {
+		return dbm;
+	}
 
-    public void remove(Model m) {
-        tables.get(m.modelName).remove(m);
-    }
+	public void save(Model m) {
+		tables.get(m.modelName).save(m);
+	}
 
-    public boolean hasModel(Model m) {
-        return tables.containsKey(m.modelName);
-    }
+	public void remove(Model m) {
+		tables.get(m.modelName).remove(m);
+	}
 
-    public Table getTable(String modelName) {
-        return tables.get(modelName);
-    }
+	public boolean hasModel(Model m) {
+		return tables.containsKey(m.modelName);
+	}
 
-    public Table getTable(Model m) {
-        return getTable(m.modelName);
+	public Table getTable(String modelName) {
+		return tables.get(modelName);
+	}
 
-    }
+	public Table getTable(Model m) {
+		return getTable(m.modelName);
 
-    public void registerModel(Model m) {
-        tables.put(m.modelName, new Table(m.modelName));
-        System.out.println("Registered model: " + m.modelName);
-    }
+	}
 
-    public int newID(Model m) {
-        int max_id = tables.get(m.modelName).maxID();
-        return max_id+1;
-    }
+	public void registerModel(Model m) {
+		tables.put(m.modelName, new Table(m.modelName));
+		System.out.println("Registered model: " + m.modelName);
+	}
+
+	public int newID(Model m) {
+		int max_id = tables.get(m.modelName).maxID();
+		return max_id + 1;
+	}
 
 	public static String getPassword() {
 		return PASSWORD;
@@ -58,35 +59,51 @@ public class DatabaseManager {
 	public static String getUsername() {
 		return USERNAME;
 	}
+
+	/**
+	 * 
+	 * @return current failed login attempts
+	 */
+	
+	public static int wrongLogin() {
+		return loginAttempts++;
+	}
+	
+	public static void correctLogin(){
+		loginAttempts = 0;
+	}
+
 }
 
-class Table implements Iterable<Model>{
-    private String modelName;
-    private HashMap<Integer, Model> rows;
+class Table implements Iterable<Model> {
+	private String modelName;
+	private HashMap<Integer, Model> rows;
 
-    // TODO: Support indexing?
+	// TODO: Support indexing?
 
-    public Table(String modelName) {
-        this.modelName = modelName;
-        rows = new HashMap<Integer, Model>();
-    }
+	public Table(String modelName) {
+		this.modelName = modelName;
+		rows = new HashMap<Integer, Model>();
+	}
 
-    public void save(Model m) {
-        rows.put(m.id, m);
-    }
+	public void save(Model m) {
+		rows.put(m.id, m);
+	}
 
-    public void remove(Model m) {
-        // TODO
-    }
+	public void remove(Model m) {
+		// TODO
+	}
 
-    public int maxID() {
-        int max = Integer.MIN_VALUE;
-        for(Integer i : rows.keySet()) if (i > max) max = i;
-        return max;
-    }
+	public int maxID() {
+		int max = Integer.MIN_VALUE;
+		for (Integer i : rows.keySet())
+			if (i > max)
+				max = i;
+		return max;
+	}
 
-    @Override
-    public Iterator<Model> iterator() {
-        return rows.values().iterator();
-    }
+	@Override
+	public Iterator<Model> iterator() {
+		return rows.values().iterator();
+	}
 }

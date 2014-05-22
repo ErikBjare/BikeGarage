@@ -45,24 +45,26 @@ public class LoginView extends JFrame {
 				String username = text1.getText();
 				char[] pass = pass1.getPassword();
 				String password = new String(pass);
-				System.out.println("Lösen är " + password);
 
 				if (DatabaseManager.getPassword().equals(password)
 						&& DatabaseManager.getUsername().equals(username)) {
+					
 					new BomsView("BOMS view", bikeOwnerManagementSystem);
+					
+					DatabaseManager.correctLogin();
 					dispose();
-				}else{
+				} else if (DatabaseManager.wrongLogin() == 10) {
+					loginButton.setEnabled(false);
+				} else {
 					pass1.setText("");
 				}
 
-				
 			}
 		});
 
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				dispose();
-
 			}
 		});
 
