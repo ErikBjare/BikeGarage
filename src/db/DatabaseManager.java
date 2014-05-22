@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 public class DatabaseManager {
-	private static DatabaseManager dbm;
+	private static DatabaseManager dbm = getDBM();
 
 	private static final String USERNAME = "OLOF";
 	private static final String PASSWORD = "YOLOF";
@@ -44,6 +44,7 @@ public class DatabaseManager {
     }
 
 	public Table getTable(String modelName) {
+        System.out.println(tables);
 		return tables.get(modelName);
 	}
 

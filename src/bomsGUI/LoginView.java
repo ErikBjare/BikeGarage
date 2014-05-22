@@ -60,7 +60,6 @@ public class LoginView extends JFrame {
 					DatabaseManager.correctLogin();
 					dispose();
 				} else {
-
 					pass1.setText("");
 				}
 

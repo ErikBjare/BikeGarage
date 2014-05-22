@@ -1,5 +1,7 @@
 package db;
 
+import java.util.ArrayList;
+
 public class Bike extends Model {
     public static String modelName = "Bike";
 
@@ -35,6 +37,18 @@ public class Bike extends Model {
         }
         return null;
     }
+    
+    public static ArrayList<Bike> getCheckedIn(){
+    	ArrayList<Bike> checkedInBikes = new ArrayList<Bike>();
+    	
+        for(Model b : dbm.getTable(modelName)) {
+        	Bike bike = (Bike)b;
+            if(bike.checkedIn) {
+            	checkedInBikes.add(bike);
+            }
+        }
+        return checkedInBikes;
+    }
 	
 	public BikeOwner getOwner(){
 		return owner;
@@ -42,5 +56,9 @@ public class Bike extends Model {
 
     public String getID() {
         return id;
+    }
+    
+    public void setCheckedIn(){
+    	checkedIn = true;
     }
 }
