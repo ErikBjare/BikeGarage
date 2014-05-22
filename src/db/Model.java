@@ -2,7 +2,7 @@ package db;
 
 public abstract class Model {
 	protected static DatabaseManager dbm = DatabaseManager.getDBM();
-	protected int id;
+	protected String id;
 	public String modelName;
 
 	public Model(String modelName) {
@@ -10,7 +10,7 @@ public abstract class Model {
 		if (!dbm.hasModel(this)) {
 			dbm.registerModel(this);
 		}
-		this.id = dbm.newID(this);
+		this.id = Integer.toString(dbm.newID(this));
 	}
 
 	public void save() {

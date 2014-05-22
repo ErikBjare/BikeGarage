@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 
 public class BikeOwner extends Model {
-    private static String modelName = "BikeOwner";
+    public static String modelName = "BikeOwner";
 
     private String name;
 	private String ssn;
@@ -24,11 +24,16 @@ public class BikeOwner extends Model {
 		//pin = boms.generatePIN();
 		
 	}
-	
-	public void addBike(Bike bike){
-		bikes.add(bike);
-	}
-	
+
+    public void addBike(Bike bike){
+        bikes.add(bike);
+    }
+
+    public void addBike(){
+        Bike bike = new Bike(this);
+        addBike(bike);
+    }
+
 	public void removeBike(Bike bike){
 		bikes.remove(bike);
 	}
@@ -40,9 +45,24 @@ public class BikeOwner extends Model {
     public String getName() {
         return name;
     }
-    
+
+    public String getSSN() {
+        return ssn;
+    }
+
     public ArrayList<Bike> getBikes(){
     	return bikes;
+    }
+
+    public static BikeOwner getBySSN(String ssn) {
+        for(Model b : dbm.getTable(modelName)) {
+            BikeOwner bikeowner = (BikeOwner)b;
+            System.out.println(bikeowner.getSSN());
+            if(ssn.equals(bikeowner.getSSN())) {
+                return bikeowner;
+            }
+        }
+        return null;
     }
 
     public static BikeOwner getByName(String name) {
@@ -57,7 +77,7 @@ public class BikeOwner extends Model {
     }
 
 	public String toString(){
-		return ssn;
+		return "{BIKEOWNER | name: " + name + ", ssn: " + ssn + "}";
 	}
 	
 }

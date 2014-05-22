@@ -11,6 +11,7 @@ import db.BikeOwner;
 
 public class RegistrationForm extends JFrame {
 
+    private BomsView view;
 	private JPanel panel;
 	private JLabel nameLabel, emailLabel;
 	private JTextField text1, text2;
@@ -21,8 +22,9 @@ public class RegistrationForm extends JFrame {
 	// String name;
 	// String email;
 
-	public RegistrationForm(String title, String ssn) {
+	public RegistrationForm(String title, String ssn, BomsView view) {
 		super(title);
+        this.view = view;
 		this.ssn = ssn;
 
 		text1 = new JTextField(); // Kan ge dem en int parameter för maxtecken
@@ -48,7 +50,7 @@ public class RegistrationForm extends JFrame {
 				String email = text2.getText();
 
 				BikeOwner toBeAdded = new BikeOwner(name, getSsn(), email);
-				toBeAdded.addBike(new Bike(toBeAdded, "id"));
+				toBeAdded.addBike(new Bike(toBeAdded));
 				// TODO
 				// Save bikeowner & bike
 				dispose();
@@ -71,4 +73,11 @@ public class RegistrationForm extends JFrame {
 	public String getSsn() {
 		return ssn;
 	}
+
+    private void addBike(BikeOwner bikeOwner) {
+        Bike bike = new Bike(bikeOwner);
+        bikeOwner.addBike();
+        view.boms.printBarcode(bike.getID());
+        JOptionPane.showMessageDialog(null, "Bike successfully added.");
+    }
 }

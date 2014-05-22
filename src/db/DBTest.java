@@ -17,7 +17,7 @@ public class DBTest extends TestCase {
 
     public void testBikeOwner() {
         BikeOwner bikeowner = new BikeOwner("Erik", "94XXXX-XXXX", "erik@example.com");
-        bikeowner.addBike(new Bike(bikeowner, "bArC0d3"));
+        bikeowner.addBike(new Bike(bikeowner));
 
         bikeowner.save();
         assertNotNull(BikeOwner.getByName("Erik"));

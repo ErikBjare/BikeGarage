@@ -18,7 +18,7 @@ public class SearchResultFrame {
 	public SearchResultFrame(BikeOwner[] bikeOwners, final BomsView view) {
 
 		JFrame f = new JFrame();
-		final JList list = new JList(bikeOwners);
+		final JList list = new JList<BikeOwner>(bikeOwners);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 		ListSelectionListener listSelectionListener = new ListSelectionListener() {
@@ -49,7 +49,7 @@ public class SearchResultFrame {
 		
 
 		JFrame f = new JFrame();
-		final JList list = new JList(bikeArray);
+		final JList list = new JList<String>(bikeArray);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 		ListSelectionListener listSelectionListener = new ListSelectionListener() {

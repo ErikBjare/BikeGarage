@@ -1,12 +1,15 @@
 package bomsGUI;
 
+import db.Bike;
+import db.BikeOwner;
+import db.DatabaseManager;
+
 import javax.swing.*;
 
 import java.awt.event.*;
 
 public class AddButton extends JButton implements ActionListener {
 	private BomsView view;
-	// TODO fullList ska titta med databasen
 	private boolean fullList = false;
 
 	public AddButton(BomsView view) {
@@ -14,44 +17,44 @@ public class AddButton extends JButton implements ActionListener {
 		this.view = view;
 		addActionListener(this);
 		setToolTipText("Add a bike or a bike owner.");
-		this.setEnabled(!fullList);
-
+        checkFull();
 	}
+
+    private void checkFull() {
+        int s = DatabaseManager.getDBM().getTable(Bike.modelName).size();
+        if(s >= 5000) fullList = true;
+        this.setEnabled(!fullList);
+    }
 
 	public void actionPerformed(ActionEvent e) {
-
 		String ssn = JOptionPane.showInputDialog("Enter SSN of the bike owner");
+        BikeOwner bikeOwner = BikeOwner.getBySSN(ssn);
 
-		if (ssn == null || ssn.length() == 0) {
-			return;
-		} else if (ssn.equals("Filip") || ssn.equals("01")) {
-			Object[] options2 = { "Yes", "No" };
-			int m = JOptionPane.showOptionDialog(null,
-					"Do you wish to add a bike to " + ssn, "Adding a bike",
-					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
-					null, options2, options2[0]);
-			if (m == 0) {
-				// bikeOwner.add(new Bike());
-				//TODO generate barcode
-				view.boms.printBarcode("generateBarcode");
-				JOptionPane
-						.showMessageDialog(
-								null,
-								"Bike succesfully added." );
-			}
-		}else{
-			Object[] options2 = { "Yes", "No" };
-			
-			int n =JOptionPane.showOptionDialog(null,"Do you wish to register a new bike owner with the entered SSN: " + ssn + "?", "Adding a bike owner",
-					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
-					null, options2, options2[0]);
-			if(n == 0){
-				new RegistrationForm("Bike owner registation", ssn);
-			}
-		}
+        Object[] options2 = { "Yes", "No" };
 
-		// TODO
-		this.setEnabled(!fullList);
+		if (bikeOwner != null) {
+            int m = JOptionPane.showOptionDialog(null,
+                    "Do you wish to add a bike to " + ssn, "Adding a bike",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
+                    null, options2, options2[0]);
+            if (m == 0) {
+                addBike(bikeOwner);
+            }
+		} else {
+            int n = JOptionPane.showOptionDialog(null,"Do you wish to register a new bike owner with the entered SSN: " + ssn + "?", "Adding a bike owner",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
+                    null, options2, options2[0]);
+            if(n == 0) {
+                new RegistrationForm("Bike owner registation", ssn, view);
+            }
+        }
+        checkFull();
 	}
 
+    private void addBike(BikeOwner bikeOwner) {
+        Bike bike = new Bike(bikeOwner);
+        bikeOwner.addBike();
+        view.boms.printBarcode(bike.getID());
+        JOptionPane.showMessageDialog(null, "Bike successfully added.");
+    }
 }

@@ -22,15 +22,15 @@ public class SearchButton extends JButton implements ActionListener {
 		BikeOwner[] bikeOwners = new BikeOwner[2];
 		
 		BikeOwner bertil = new BikeOwner("Bertil", "89", "lele@lala");
-		bertil.addBike(new Bike(bertil, "02"));
-		bertil.addBike(new Bike(bertil, "03"));
-		bertil.addBike(new Bike(bertil, "04"));
-		bertil.addBike(new Bike(bertil, "06"));
+		bertil.addBike(new Bike(bertil));
+		bertil.addBike(new Bike(bertil));
+		bertil.addBike(new Bike(bertil));
+		bertil.addBike(new Bike(bertil));
 		
 		BikeOwner merta = new BikeOwner("Merta", "92", "lawl@epixx");
-		merta.addBike(new Bike(bertil, "01"));
-		merta.addBike(new Bike(bertil, "05"));
-		merta.addBike(new Bike(bertil, "07"));
+		merta.addBike(new Bike(bertil));
+		merta.addBike(new Bike(bertil));
+		merta.addBike(new Bike(bertil));
 		
 		
 		bikeOwners[0] = bertil;

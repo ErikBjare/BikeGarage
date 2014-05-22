@@ -3,21 +3,19 @@ package db;
 public class Bike extends Model {
     public static String modelName = "Bike";
 
-    private String id;
 	private BikeOwner owner;
 	private String barcode;
 	private boolean checkedIn;
 
-	public Bike(BikeOwner owner, String id){
+	public Bike(BikeOwner owner){
         super(modelName);
 		this.owner = owner;
 		this.checkedIn = false;
-		this.id = id;
 	}
 
 
 	public String toString(){
-		return id;
+		return "{BIKE | id: " + id + ", owner: " + owner.toString() + "}";
 	}
 
     public String getBarcode() {
@@ -41,4 +39,8 @@ public class Bike extends Model {
 	public BikeOwner getOwner(){
 		return owner;
 	}
+
+    public String getID() {
+        return id;
+    }
 }
