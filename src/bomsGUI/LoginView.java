@@ -41,14 +41,24 @@ public class LoginView extends JFrame {
 		panel.add(pass1);
 		panel.add(loginButton);
 		panel.add(cancelButton);
-
+		
+		loginButton.doClick();
+			
+			if (DatabaseManager.getDBM().getLockedTime() != null // if still waiting for unlocking system
+					&& DatabaseManager.getDBM().getLockedTime()
+							.compareTo(Calendar.getInstance()) >= 0) {
+				
+				System.out.println("t");
+			}
+			
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-
+				System.out.println("tt");
 				String username = text1.getText();
 				char[] pass = pass1.getPassword();
 				String password = new String(pass);
-				if(!systemIsLocked()){
+				
+				
 				if (DatabaseManager.wrongLogin() >= 9) { // Wrong login
 					lockSystem();
 					DatabaseManager.correctLogin();
@@ -63,11 +73,12 @@ public class LoginView extends JFrame {
 					pass1.setText("");
 				}
 
-			}
+			
+				
 			}
 			public boolean systemIsLocked() {
-				if(DatabaseManager.getLockedTime() != null){
-				return DatabaseManager.getLockedTime().compareTo(
+				if(DatabaseManager.getDBM().getLockedTime() != null){
+				return DatabaseManager.getDBM().getLockedTime().compareTo(
 						Calendar.getInstance()) >= 0;
 				}else return false;
 			}
@@ -81,7 +92,7 @@ public class LoginView extends JFrame {
 					e1.printStackTrace();
 				}
 
-				Calendar cal = DatabaseManager.getLockedTime();
+				Calendar cal = DatabaseManager.getDBM().getLockedTime();
 				
 
 				while (systemIsLocked()) {
@@ -98,6 +109,7 @@ public class LoginView extends JFrame {
 
 			}
 		});
+	
 
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {

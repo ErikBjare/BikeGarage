@@ -41,7 +41,7 @@ public class Bike extends Model implements Serializable {
         return null;
     }
     
-    public static ArrayList<Bike> getCheckedIn(){
+    public static ArrayList<Bike> getCheckedInBikes(){
     	ArrayList<Bike> checkedInBikes = new ArrayList<Bike>();
     	
         for(Model b : getTable()) {
