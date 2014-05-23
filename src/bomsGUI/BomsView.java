@@ -9,7 +9,6 @@ import javax.swing.*;
 
 public class BomsView extends JFrame {
 
-	// private JFrame frame;
 	protected ButtonPanel buttonPanel;
 	private JTextArea messageArea;
 	protected BikeOwnerManagementSystem boms;
@@ -18,7 +17,6 @@ public class BomsView extends JFrame {
 
 		this.boms = boms;
 
-		// JFrame frame = new JFrame(title);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		buttonPanel = new ButtonPanel(this);
@@ -43,9 +41,7 @@ public class BomsView extends JFrame {
 		messageArea.setText(s);
 	}
 
-	// public void dispose(){
-	// frame.dispose();
-	// }
+
 	public class LogOutButton extends JButton implements ActionListener {
 		private BomsView view;
 
