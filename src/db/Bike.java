@@ -63,8 +63,8 @@ public class Bike extends Model implements Serializable {
         return id;
     }
     
-    public void setCheckedIn(){
-    	checkedIn = true;
+    public void setCheckedIn(boolean checkedIn){
+    	this.checkedIn = checkedIn;
         save();
     }
 
