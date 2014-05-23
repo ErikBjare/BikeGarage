@@ -23,11 +23,12 @@ public class BikeOwner extends Model {
 		this.email = email;
 		bikes = new ArrayList<Bike>();
 		//pin = boms.generatePIN();
-		
+		save();
 	}
 
     public void addBike(Bike bike){
         bikes.add(bike);
+        save();
     }
 
     public void addBike(){
@@ -68,7 +69,6 @@ public class BikeOwner extends Model {
     public static BikeOwner getByName(String name) {
         for(Model b : DatabaseManager.dbm.getTable(modelName)) {
             BikeOwner bikeowner = (BikeOwner)b;
-            System.out.println(bikeowner.getName());
             if(name.equals(bikeowner.getName())) {
                 return bikeowner;
             }

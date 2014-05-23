@@ -18,7 +18,6 @@ public class DBTest extends TestCase {
     public void testBikeOwner() {
         BikeOwner bikeowner = new BikeOwner("Erik", "94XXXX-XXXX", "erik@example.com");
         bikeowner.addBike();
-        bikeowner.save();
         assertNotNull(BikeOwner.getByName("Erik"));
     }
 
@@ -29,19 +28,22 @@ public class DBTest extends TestCase {
     }
 
     public void testAddMany() {
-        BikeOwner bikeowner1 = new BikeOwner("Erik", "94XXXX-XXXX", "erik@example.com");
-        bikeowner1.save();
+        new BikeOwner("Erik", "94XXXX-XXXX", "erik@example.com");
 
         assertNull(BikeOwner.getBySSN("92XXXX-XXXX"));
 
-        BikeOwner bikeowner2 = new BikeOwner("Olof", "92XXXX-XXXX", "olof@example.com");
-        bikeowner2.save();
-        BikeOwner bikeowner3 = new BikeOwner("Filip", "92XXXX-XXX1", "filip@example.com");
-        bikeowner3.save();
-        bikeowner3.addBike();
+        new BikeOwner("Olof", "92XXXX-XXXX", "olof@example.com");
+        new BikeOwner("Filip", "92XXXX-XXX1", "filip@example.com");
 
         BikeOwner boBySSN = BikeOwner.getBySSN("92XXXX-XXX1");
         assertNotNull(boBySSN);
-        assertTrue(boBySSN.getBikes().size() > 0);
+    }
+
+    public void testAddBikes() {
+        BikeOwner bikeOwner = new BikeOwner("Bikeswagger", "666666-1337", "bikeguy@example.com");
+        for(int i=0; i<10; i++) {
+            bikeOwner.addBike();
+        }
+        assertTrue(bikeOwner.getBikes().size() == 10);
     }
 }
