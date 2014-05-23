@@ -10,6 +10,9 @@ public abstract class Model implements Serializable {
 	public Model(String modelName) {
 		this.modelName = modelName;
 		this.id = Integer.toString(DatabaseManager.getDBM().newID(modelName));
+		while(id.length() < 5){
+			id = "0" + id;
+		}
 	}
 
 	public void save() {
