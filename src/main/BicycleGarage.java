@@ -1,4 +1,7 @@
 package main;
+
+import bomsGUI.BikeOwnerManagementSystem;
+
 public class BicycleGarage {
 	
     public BicycleGarage() {
@@ -14,5 +17,6 @@ public class BicycleGarage {
     }
     public static void main(String[] args) {
         new BicycleGarage();
+        new BikeOwnerManagementSystem();
     }
 }
