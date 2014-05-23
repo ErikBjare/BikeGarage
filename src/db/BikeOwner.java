@@ -14,7 +14,7 @@ public class BikeOwner extends Model implements Serializable {
     private String name;
 	private String ssn;
 	private String email;
-	private ArrayList<Bike> bikes;
+	private static ArrayList<Bike> bikes;
 	private String pin;
 
 
@@ -24,7 +24,7 @@ public class BikeOwner extends Model implements Serializable {
 		this.ssn = ssn;
 		this.email = email;
 		this.bikes = new ArrayList<Bike>();
-		//pin = boms.generatePIN();
+		this.pin = newPIN();
 		save();
 	}
 
@@ -61,7 +61,7 @@ public class BikeOwner extends Model implements Serializable {
             while(pin.length() < 4){
                 pin = "0" + pin;
             }
-        } while(getByPIN(pin) == null);
+        } while(getByPIN(pin) != null);
         return pin;
     }
 
@@ -117,6 +117,16 @@ public class BikeOwner extends Model implements Serializable {
 
     public static Table getTable() {
         return DatabaseManager.getDBM().getTable(modelName);
+    }
+    
+    public static boolean hasCheckedInBikes(){
+    	boolean hasCheckedInBikes;
+    	for(Bike b : bikes){
+    		if (b.isCheckedIn()){
+    			return true;
+    		}
+    	}
+    	return false;
     }
 
 }

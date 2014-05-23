@@ -50,7 +50,9 @@ public class RegistrationForm extends JFrame {
 
 				BikeOwner bikeOwner = new BikeOwner(name, getSsn(), email);
                 addBike(bikeOwner);
-
+                JOptionPane.showMessageDialog(null, "Bike owner successfully added");
+                JOptionPane.showMessageDialog(null, "Bike owner has the PIN-code:" + bikeOwner.getPIN());
+                
 				dispose();
 			}
 		});
@@ -76,6 +78,5 @@ public class RegistrationForm extends JFrame {
         Bike bike = new Bike(bikeOwner);
         bikeOwner.addBike(bike);
         view.boms.printBarcode(bike.getBarcode());
-        JOptionPane.showMessageDialog(null, "Bike successfully added.");
     }
 }

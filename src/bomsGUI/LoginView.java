@@ -78,7 +78,6 @@ public class LoginView extends JFrame {
 				try {
 					lockedView = new LockedView();
 				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 
