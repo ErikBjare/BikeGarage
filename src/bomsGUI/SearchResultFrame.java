@@ -23,8 +23,8 @@ public class SearchResultFrame {
 
 		ListSelectionListener listSelectionListener = new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent listSelectionEvent) {
-				ArrayList<Bike> bikes = ((BikeOwner) list.getSelectedValue()).getBikes();
 				if (!listSelectionEvent.getValueIsAdjusting()) {
+					ArrayList<Bike> bikes = ((BikeOwner) list.getSelectedValue()).getBikes();
 					SearchResultFrame srf = new SearchResultFrame(bikes, view);
 				}
 			}

@@ -23,9 +23,7 @@ public class Bike extends Model implements Serializable {
 
     public String getBarcode() {
     	barcode = id;
-    	while(barcode.length() < 5){
-    		barcode = "0" + barcode;
-    	}
+    
         return barcode;
     }
 

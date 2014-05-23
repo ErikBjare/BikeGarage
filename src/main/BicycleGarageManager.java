@@ -61,11 +61,8 @@ public class BicycleGarageManager {
 				+ " has been scanned at the entry door");
 		Bike enteringBike = Bike.getByBarcode(code);
 		if (enteringBike != null) {
-			if (!enteringBike.isCheckedIn()) {
 				enteringBike.setCheckedIn(true);
 				entryLock.open(10);
-			}
-
 		}
 	}
 
