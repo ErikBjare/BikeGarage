@@ -22,7 +22,8 @@ public class Table implements Iterable<Model>, Serializable {
     }
 
     public void remove(Model m) {
-        // TODO
+        rows.remove(m.id);
+        System.out.println("Removed: " + m.toString());
     }
 
     public int maxID() {
