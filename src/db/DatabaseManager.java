@@ -76,7 +76,7 @@ public class DatabaseManager implements Serializable {
 
     public void save(Model m) {
 		tables.get(m.modelName).save(m);
-        saveToFile();
+        //saveToFile();
 	}
 
 	public void remove(Model m) {
