@@ -65,6 +65,6 @@ public class Bike extends Model implements Serializable {
     }
 
     public static Table getTable() {
-        return DatabaseManager.dbm.getTable(modelName);
+        return DatabaseManager.getDBM().getTable(modelName);
     }
 }

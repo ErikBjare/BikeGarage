@@ -1,12 +1,13 @@
 package db;
 
+import javax.xml.crypto.Data;
 import java.io.*;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 
 public class DatabaseManager implements Serializable {
-	public static DatabaseManager dbm = new DatabaseManager();
+	private static DatabaseManager dbm = getDBM();
 
 	private static final String USERNAME = "";
 	private static final String PASSWORD = "";
@@ -16,15 +17,20 @@ public class DatabaseManager implements Serializable {
 	private HashMap<String, Table> tables;
 
 	public DatabaseManager() {
-		tables = new HashMap<String, Table>();
         System.out.println("DB INIT");
+        tables = new HashMap<String, Table>();
         for(String modelName : new String[]{BikeOwner.modelName, Bike.modelName}) {
             registerModel(modelName);
         }
-        loadFromFile();
 	}
 
 	public static DatabaseManager getDBM() {
+        if(dbm == null) {
+            boolean loaded = loadFromFile();
+            if(!loaded) {
+                dbm = new DatabaseManager();
+            }
+        }
 		return dbm;
 	}
 
@@ -38,27 +44,33 @@ public class DatabaseManager implements Serializable {
             System.out.println("There was an error");
             System.out.println(e);
         }
-        //System.out.println("Saved database to file");
-        //dbm.printTables();
+        System.out.println("DB SAVED");
+        dbm.printTables();
     }
 
-    public static void loadFromFile() {
+    public static boolean loadFromFile() {
         try{
             FileInputStream dbm = new FileInputStream("db.ser");
             ObjectInputStream reader = new ObjectInputStream(dbm);
             DatabaseManager.dbm = (DatabaseManager) reader.readObject();
+            System.out.println(DatabaseManager.dbm.tables);
+        } catch (FileNotFoundException e) {
+            return false;
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+            return false;
         }
-        System.out.println("Loaded database from file");
-        //dbm.printTables();
+        System.out.println("DB LOADED");
+        dbm.printTables();
+        return true;
     }
 
     public void printTables() {
         for(Table t : tables.values()) {
-            System.out.println(t.modelName + " has " + t.size() + " entries");
+            System.out.println(" - " + t.modelName + " has " + t.size() + " entries");
         }
     }
 
@@ -100,8 +112,9 @@ public class DatabaseManager implements Serializable {
         registerModel(m.modelName);
     }
 
-	public int newID(String modelName) {
-		int max_id = tables.get(modelName).maxID();
+	public static int newID(String modelName) {
+        System.out.println(DatabaseManager.getDBM().tables);
+		int max_id = DatabaseManager.getDBM().tables.get(modelName).maxID();
 		return max_id + 1;
 	}
 
