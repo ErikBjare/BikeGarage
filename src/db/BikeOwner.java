@@ -3,10 +3,11 @@ package db;
 import db.Bike;
 
 import javax.xml.crypto.Data;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class BikeOwner extends Model {
+public class BikeOwner extends Model implements Serializable {
     public static String modelName = "BikeOwner";
 
     private String name;
@@ -57,7 +58,7 @@ public class BikeOwner extends Model {
     }
 
     public static BikeOwner getBySSN(String ssn) {
-        for(Model b : DatabaseManager.dbm.getTable(modelName)) {
+        for(Model b : DatabaseManager.getDBM().getTable(modelName)) {
             BikeOwner bikeowner = (BikeOwner)b;
             if(ssn.equals(bikeowner.getSSN())) {
                 return bikeowner;
@@ -67,7 +68,7 @@ public class BikeOwner extends Model {
     }
 
     public static BikeOwner getByName(String name) {
-        for(Model b : DatabaseManager.dbm.getTable(modelName)) {
+        for(Model b : DatabaseManager.getDBM().getTable(modelName)) {
             BikeOwner bikeowner = (BikeOwner)b;
             if(name.equals(bikeowner.getName())) {
                 return bikeowner;
@@ -77,11 +78,11 @@ public class BikeOwner extends Model {
     }
 
 	public String toString(){
-		return "{BIKEOWNER | name: " + name + ", ssn: " + ssn + "}";
+		return "{BIKEOWNER | name: " + name + ", ssn: " + ssn + ", email:" + email + "}";
 	}
 
     public static Table getTable() {
-        return DatabaseManager.dbm.getTable(modelName);
+        return DatabaseManager.getDBM().getTable(modelName);
     }
 
 }

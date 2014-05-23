@@ -39,22 +39,6 @@ public class SearchButton extends JButton implements ActionListener {
         BikeOwner[] bikeOwners = new BikeOwner[1];
         bikeOwners[0] = bikeOwner;
 
-        /**
-		BikeOwner bertil = new BikeOwner("Bertil", "89", "lele@lala");
-		bertil.addBike(new Bike(bertil));
-		bertil.addBike(new Bike(bertil));
-		bertil.addBike(new Bike(bertil));
-		bertil.addBike(new Bike(bertil));
-		
-		BikeOwner merta = new BikeOwner("Merta", "92", "lawl@epixx");
-		merta.addBike(new Bike(bertil));
-		merta.addBike(new Bike(bertil));
-		merta.addBike(new Bike(bertil));
-
-		bikeOwners[0] = bertil;
-		bikeOwners[1] = merta;
-
-         */
 
     	SearchResultFrame srf = new SearchResultFrame(bikeOwners, view);
 	}

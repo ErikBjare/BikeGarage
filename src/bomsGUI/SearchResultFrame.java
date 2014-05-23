@@ -23,10 +23,9 @@ public class SearchResultFrame {
 
 		ListSelectionListener listSelectionListener = new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent listSelectionEvent) {
+				ArrayList<Bike> bikes = ((BikeOwner) list.getSelectedValue()).getBikes();
 				if (!listSelectionEvent.getValueIsAdjusting()) {
-					SearchResultFrame srf = new SearchResultFrame(
-							((BikeOwner) list.getSelectedValue()).getBikes(),
-							view);
+					SearchResultFrame srf = new SearchResultFrame(bikes, view);
 				}
 			}
 
@@ -38,12 +37,12 @@ public class SearchResultFrame {
 		f.setVisible(true);
 	}
 
-	public SearchResultFrame(ArrayList<Bike> bikes, final BomsView view) {
+	public SearchResultFrame(final ArrayList<Bike> bikes, final BomsView view) {
 		
 		final String[] bikeArray = new String[bikes.size()];
 		
 		for (int i = 0 ; i < bikes.size(); i++){
-			bikeArray[i] = bikes.get(i).getBarcode();
+			bikeArray[i] = bikes.get(i).toString();
 		}
 
 		JFrame f = new JFrame();
@@ -53,7 +52,7 @@ public class SearchResultFrame {
 		ListSelectionListener listSelectionListener = new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent listSelectionEvent) {
 				if (!listSelectionEvent.getValueIsAdjusting()) {
-					view.buttonPanel.printBarcodeButton.setBarcodeToBePrinted(bikeArray[listSelectionEvent.getLastIndex()]);
+					view.buttonPanel.printBarcodeButton.setBarcodeToBePrinted(bikes.get(listSelectionEvent.getLastIndex()).getBarcode());
 					view.buttonPanel.printBarcodeButton.setEnabled(true);
 				}
 			}

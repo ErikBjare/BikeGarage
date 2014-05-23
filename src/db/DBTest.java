@@ -3,11 +3,9 @@ package db;
 import junit.framework.TestCase;
 
 public class DBTest extends TestCase {
-    public DatabaseManager dbm;
 
     @org.junit.Before
     public void setUp() throws Exception {
-        this.dbm = DatabaseManager.getDBM();
     }
 
     @org.junit.After
@@ -45,5 +43,17 @@ public class DBTest extends TestCase {
             bikeOwner.addBike();
         }
         assertTrue(bikeOwner.getBikes().size() == 10);
+    }
+
+    public void testSaveLoad() {
+        BikeOwner bo = new BikeOwner("Saver Loader", "123", "asd@asd.com");
+        bo.addBike();
+        bo.addBike();
+        bo.addBike();
+        bo.addBike();
+        DatabaseManager.loadFromFile();
+
+        bo = BikeOwner.getBySSN("123");
+        assertNotNull(bo);
     }
 }

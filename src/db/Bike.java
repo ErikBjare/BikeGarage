@@ -1,8 +1,9 @@
 package db;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Bike extends Model {
+public class Bike extends Model implements Serializable {
     public static String modelName = "Bike";
 
 	private BikeOwner owner;
@@ -16,12 +17,15 @@ public class Bike extends Model {
         save();
 	}
 
-
 	public String toString(){
 		return "{BIKE | id: " + id + ", owner: " + owner.toString() + "}";
 	}
 
     public String getBarcode() {
+    	barcode = id.toString();
+    	while(barcode.length() < 5){
+    		barcode = "0" + barcode;
+    	}
         return barcode;
     }
 
@@ -65,6 +69,6 @@ public class Bike extends Model {
     }
 
     public static Table getTable() {
-        return DatabaseManager.dbm.getTable(modelName);
+        return DatabaseManager.getDBM().getTable(modelName);
     }
 }

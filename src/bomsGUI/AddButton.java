@@ -63,9 +63,8 @@ public class AddButton extends JButton implements ActionListener {
 
     private void addBike(BikeOwner bikeOwner) {
         Bike bike = new Bike(bikeOwner);
-        bikeOwner.addBike();
-        bike.save();
-        view.boms.printBarcode(bike.getID());
+        bikeOwner.addBike(bike);
+        view.boms.printBarcode(bike.getBarcode());
         JOptionPane.showMessageDialog(null, "Bike successfully added.");
     }
 }

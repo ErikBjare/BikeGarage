@@ -19,15 +19,14 @@ public class RegistrationForm extends JFrame {
 	private JButton cancelButton;
 	private String ssn;
 
-	// String name;
-	// String email;
+
 
 	public RegistrationForm(String title, String ssn, BomsView view) {
 		super(title);
         this.view = view;
 		this.ssn = ssn;
 
-		text1 = new JTextField(); // Kan ge dem en int parameter för maxtecken
+		text1 = new JTextField(); 
 		text2 = new JTextField();
 
 		nameLabel = new JLabel("Name");
@@ -50,12 +49,8 @@ public class RegistrationForm extends JFrame {
 				String email = text2.getText();
 
 				BikeOwner bikeOwner = new BikeOwner(name, getSsn(), email);
-				bikeOwner.addBike();
-                bikeOwner.save();
+                addBike(bikeOwner);
 
-
-				// TODO
-				// Save bikeowner & bike
 				dispose();
 			}
 		});
@@ -79,8 +74,8 @@ public class RegistrationForm extends JFrame {
 
     private void addBike(BikeOwner bikeOwner) {
         Bike bike = new Bike(bikeOwner);
-        bikeOwner.addBike();
-        view.boms.printBarcode(bike.getID());
+        bikeOwner.addBike(bike);
+        view.boms.printBarcode(bike.getBarcode());
         JOptionPane.showMessageDialog(null, "Bike successfully added.");
     }
 }

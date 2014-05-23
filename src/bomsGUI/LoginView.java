@@ -25,11 +25,11 @@ public class LoginView extends JFrame {
 			final BikeOwnerManagementSystem bikeOwnerManagementSystem) {
 		super(title);
 
-		text1 = new JTextField(); // Kan ge dem en int parameter för maxtecken
+		text1 = new JTextField(); 
 		pass1 = new JPasswordField();
 
 		nameLabel = new JLabel("Username");
-		passwordLabel = new JLabel("Password"); // Passwodfield
+		passwordLabel = new JLabel("Password");
 
 		loginButton = new JButton("Login");
 		cancelButton = new JButton("Cancel");
@@ -90,13 +90,12 @@ public class LoginView extends JFrame {
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 
 				}
 				loginButton.setEnabled(true);
-				DatabaseManager.correctLogin(); // Sets login count to 0
+				DatabaseManager.correctLogin();
 
 			}
 		});
