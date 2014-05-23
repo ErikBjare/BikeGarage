@@ -13,6 +13,7 @@ public class Bike extends Model {
         super(modelName);
 		this.owner = owner;
 		this.checkedIn = false;
+        save();
 	}
 
 
@@ -60,6 +61,7 @@ public class Bike extends Model {
     
     public void setCheckedIn(){
     	checkedIn = true;
+        save();
     }
 
     public static Table getTable() {

@@ -19,7 +19,6 @@ public class Table implements Iterable<Model>, Serializable {
     public void save(Model m) {
         rows.put(m.id, m);
         System.out.println("Saved: " + m.toString());
-        DatabaseManager.saveToFile();
     }
 
     public void remove(Model m) {
@@ -28,7 +27,6 @@ public class Table implements Iterable<Model>, Serializable {
 
     public int maxID() {
         int max = 0;
-        System.out.println("hej " + counter );
         for (String is : rows.keySet()) {
             int i = Integer.parseInt(is);
             if (i > max) {

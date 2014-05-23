@@ -21,7 +21,7 @@ public class DatabaseManager implements Serializable {
         for(String modelName : new String[]{BikeOwner.modelName, Bike.modelName}) {
             registerModel(modelName);
         }
-		// TODO: Load and save by serializing
+        loadFromFile();
 	}
 
 	public static DatabaseManager getDBM() {
@@ -64,10 +64,12 @@ public class DatabaseManager implements Serializable {
 
     public void save(Model m) {
 		tables.get(m.modelName).save(m);
+        saveToFile();
 	}
 
 	public void remove(Model m) {
 		tables.get(m.modelName).remove(m);
+        saveToFile();
 	}
 
     public boolean hasModel(String modelName) {
