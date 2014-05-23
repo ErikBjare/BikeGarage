@@ -38,10 +38,14 @@ public class BikeOwner extends Model implements Serializable {
     }
 
 	public void removeBike(Bike bike){
+        bike.remove();
 		bikes.remove(bike);
 	}
 
 	public void removeAllBikes(){
+        for(Bike bike : bikes) {
+            bike.remove();
+        }
 		bikes.clear();
 	}
 

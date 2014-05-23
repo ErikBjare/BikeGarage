@@ -3,6 +3,7 @@ package bomsGUI;
 import javax.swing.*;
 
 import db.Bike;
+import db.BikeOwner;
 import db.DatabaseManager;
 
 import java.awt.event.*;
@@ -22,34 +23,16 @@ public class RemoveButton extends JButton implements ActionListener {
 		String ssnOrName = JOptionPane
 				.showInputDialog("Enter SSN or name of the bike owner");
 
-		// TODO: Hur tittar man om ssn eller namn finns i databasen? (1)
 		// TODO: Ta bort BikeOwner (2) eller Bike (3)
 		// TODO: Få upp cykelägerns (BikeOwner) cyklar (4)
-		
-		if (ssnOrName == null) {
-			return;
-		}
-		
-		boolean bikeOwnerExists = true;
-		
-		db.BikeOwner bikeOwner = null;
-		
-		db.Table bikeOwners =  DatabaseManager.getDBM().getTable("BikeOwner");
-		for(db.Model m : bikeOwners) {
-			db.BikeOwner bo = (db.BikeOwner) m;
-			System.out.println(bo.toString());
-			System.out.println(bo.getSSN());
-			if(bo.getSSN() == ssnOrName || bo.getName() == ssnOrName){
-				bikeOwnerExists = true;
-				bikeOwner = bo;
-			}
-		}
-		
 
+		if (ssnOrName == null) return;
+
+		BikeOwner bikeOwner;
+        bikeOwner = BikeOwner.getByName(ssnOrName);
+        if(bikeOwner == null) bikeOwner = BikeOwner.getBySSN(ssnOrName);
 		
-		
-		
-		 if (bikeOwnerExists) { // Checks if bike owner exists in database
+	    if (bikeOwner != null) { // Checks if bike owner exists in database
 			// TODO (1)
 			Object[] options1 = {
 					"Remove the bike owner.",
@@ -75,12 +58,12 @@ public class RemoveButton extends JButton implements ActionListener {
 				}
 			} else if (n == 1) {
 				ArrayList<Bike> bikes = bikeOwner.getBikes();
+
 				ArrayList<String> bikeIDs = new ArrayList<String>();
 				for(Bike bike : bikes){
 					bikeIDs.add(bike.getID());
 				}
 				Object[] choosableBikes = bikeIDs.toArray();
-//				Object[] possibilities = {"bike1", "bike2", "bike3"};
 				String s = (String) JOptionPane
 						.showInputDialog(null,
 								"Select the bike you wish to remove:",
@@ -90,9 +73,7 @@ public class RemoveButton extends JButton implements ActionListener {
 
 				if ((s != null) && (s.length() > 0)) {
 					System.out.println("Removing " + s);
-//					bikes.get(bikeNumber);    fixa
-//					get
-//					bikeOwner.removeBike(s);
+					bikeOwner.removeBike(bikes.get(bikeIDs.indexOf(s)));
 				}
 
 			}

@@ -49,7 +49,7 @@ public class DatabaseManager implements Serializable {
     }
 
     public static boolean loadFromFile() {
-        try{
+        try {
             FileInputStream dbm = new FileInputStream("db.ser");
             ObjectInputStream reader = new ObjectInputStream(dbm);
             DatabaseManager.dbm = (DatabaseManager) reader.readObject();
