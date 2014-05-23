@@ -17,7 +17,6 @@ public class ButtonPanel extends JPanel {
 		add(new SearchButton(view));
 		add(new CheckedInButton(view));
 		add(printBarcodeButton);
-//		add(new LogOutButton(view));
 		
 	}
 

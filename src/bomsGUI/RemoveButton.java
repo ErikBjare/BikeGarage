@@ -62,7 +62,6 @@ public class RemoveButton extends JButton implements ActionListener {
 					// TODO (3)
 				}
 
-				// If you're here, the return value was null/empty.
 			}
 		} else {
 			JOptionPane

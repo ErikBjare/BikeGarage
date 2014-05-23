@@ -19,15 +19,14 @@ public class RegistrationForm extends JFrame {
 	private JButton cancelButton;
 	private String ssn;
 
-	// String name;
-	// String email;
+
 
 	public RegistrationForm(String title, String ssn, BomsView view) {
 		super(title);
         this.view = view;
 		this.ssn = ssn;
 
-		text1 = new JTextField(); // Kan ge dem en int parameter för maxtecken
+		text1 = new JTextField(); 
 		text2 = new JTextField();
 
 		nameLabel = new JLabel("Name");
