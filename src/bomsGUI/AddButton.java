@@ -23,7 +23,8 @@ public class AddButton extends JButton implements ActionListener {
 	}
 
     private void checkFull() {
-        int s = DatabaseManager.getDBM().getTable(Bike.modelName).size();
+        int bi = DatabaseManager.getDBM().getTable(Bike.modelName).size();
+        int boi = DatabaseManager.getDBM().getTable(BikeOwner.modelName).size();
         if(s >= 5000) fullList = true;
         this.setEnabled(!fullList);
     }
