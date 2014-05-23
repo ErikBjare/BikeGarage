@@ -55,7 +55,7 @@ public class LoginView extends JFrame {
 				} else if (DatabaseManager.getPassword().equals(password)
 						&& DatabaseManager.getUsername().equals(username)) {
 
-					new BomsView("BOMS view", bikeOwnerManagementSystem);
+					new BomsView("Bike owner management system", bikeOwnerManagementSystem);
 
 					DatabaseManager.correctLogin();
 					dispose();
