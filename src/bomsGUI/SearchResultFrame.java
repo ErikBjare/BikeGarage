@@ -40,10 +40,10 @@ public class SearchResultFrame {
 
 	public SearchResultFrame(ArrayList<Bike> bikes, final BomsView view) {
 		
-		String[] bikeArray = new String[bikes.size()];
+		final String[] bikeArray = new String[bikes.size()];
 		
 		for (int i = 0 ; i < bikes.size(); i++){
-			bikeArray[i] = bikes.get(i).toString();
+			bikeArray[i] = bikes.get(i).getBarcode();
 		}
 
 		JFrame f = new JFrame();
@@ -53,6 +53,7 @@ public class SearchResultFrame {
 		ListSelectionListener listSelectionListener = new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent listSelectionEvent) {
 				if (!listSelectionEvent.getValueIsAdjusting()) {
+					view.buttonPanel.printBarcodeButton.setBarcodeToBePrinted(bikeArray[listSelectionEvent.getLastIndex()]);
 					view.buttonPanel.printBarcodeButton.setEnabled(true);
 				}
 			}
