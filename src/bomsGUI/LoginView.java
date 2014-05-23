@@ -10,6 +10,7 @@ import javax.swing.*;
 import db.Bike;
 import db.BikeOwner;
 import db.DatabaseManager;
+
 import java.util.TimerTask;
 import java.util.Timer;
 
@@ -72,6 +73,7 @@ public class LoginView extends JFrame {
 						dispose();
 					} else {
 						pass1.setText("");
+						JOptionPane.showMessageDialog(null,"Wrong login details");
 					}
 				}
 			}
