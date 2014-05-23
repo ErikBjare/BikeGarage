@@ -57,6 +57,7 @@ public class LoginView extends JFrame {
 				String username = text1.getText();
 				char[] pass = pass1.getPassword();
 				String password = new String(pass);
+
 				
 				if (!systemIsLocked()) {
 					if (DatabaseManager.wrongLogin() >= 9) { // Wrong login
@@ -65,16 +66,14 @@ public class LoginView extends JFrame {
 					} else if (DatabaseManager.getPassword().equals(password)
 							&& DatabaseManager.getUsername().equals(username)) {
 
-						new BomsView("BOMS view", bikeOwnerManagementSystem);
+						new BomsView("Bike Owner Management System", bikeOwnerManagementSystem);
 
 						DatabaseManager.correctLogin();
 						dispose();
 					} else {
 						pass1.setText("");
 					}
-
 				}
-
 			}
 			public boolean systemIsLocked() {
 				if(DatabaseManager.getDBM().getLockedTime() != null){

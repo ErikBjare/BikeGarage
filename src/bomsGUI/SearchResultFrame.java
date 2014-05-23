@@ -33,7 +33,7 @@ public class SearchResultFrame {
 		list.addListSelectionListener(listSelectionListener);
 
 		f.add(new JScrollPane(list));
-		f.setSize(200, 500);
+		f.setSize(500, 300);
 		f.setVisible(true);
 	}
 
@@ -67,7 +67,7 @@ public class SearchResultFrame {
 		});
 
 		f.add(new JScrollPane(list));
-		f.setSize(200, 500);
+		f.setSize(600, 300);
 		f.setVisible(true);
 
 	}
