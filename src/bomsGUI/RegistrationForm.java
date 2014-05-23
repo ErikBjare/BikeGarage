@@ -49,12 +49,8 @@ public class RegistrationForm extends JFrame {
 				String email = text2.getText();
 
 				BikeOwner bikeOwner = new BikeOwner(name, getSsn(), email);
-				bikeOwner.addBike();
-                bikeOwner.save();
+                addBike(bikeOwner);
 
-
-				// TODO
-				// Save bikeowner & bike
 				dispose();
 			}
 		});
@@ -78,7 +74,7 @@ public class RegistrationForm extends JFrame {
 
     private void addBike(BikeOwner bikeOwner) {
         Bike bike = new Bike(bikeOwner);
-        bikeOwner.addBike();
+        bikeOwner.addBike(bike);
         view.boms.printBarcode(bike.getID());
         JOptionPane.showMessageDialog(null, "Bike successfully added.");
     }
