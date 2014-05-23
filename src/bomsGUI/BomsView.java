@@ -13,7 +13,7 @@ public class BomsView extends JFrame {
 	protected BikeOwnerManagementSystem boms;
 
 	public BomsView(String title, BikeOwnerManagementSystem boms) {
-
+        super(title);
 		this.boms = boms;
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -9,8 +9,6 @@ public class Table implements Iterable<Model>, Serializable {
     private HashMap<String, Model> rows;
     private int counter = 0;
 
-    // TODO: Support indexing?
-
     public Table(String modelName) {
         this.modelName = modelName;
         rows = new HashMap<String, Model>();
