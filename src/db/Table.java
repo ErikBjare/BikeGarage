@@ -25,7 +25,7 @@ public class Table implements Iterable<Model>, Serializable {
     }
 
     public int maxID() {
-        int max = 0;
+        int max = -1;
         for (String is : rows.keySet()) {
             int i = Integer.parseInt(is);
             if (i > max) {
