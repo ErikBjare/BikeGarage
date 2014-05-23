@@ -35,7 +35,7 @@ public class SearchButton extends JButton implements ActionListener {
         BikeOwner[] bikeowners = arrayListBikeOwners.toArray(new BikeOwner[arrayListBikeOwners.size()]);
         
         if (bikeowners.length == 0) {
-            System.out.println("Could not find BikeOwner");
+            JOptionPane.showMessageDialog(null,"No bike owners with the entered information are registered");
             return;
         }
 

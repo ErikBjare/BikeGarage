@@ -10,6 +10,8 @@ import javax.swing.*;
 import db.Bike;
 import db.BikeOwner;
 import db.DatabaseManager;
+import java.util.TimerTask;
+import java.util.Timer;
 
 public class LoginView extends JFrame {
 
@@ -41,39 +43,46 @@ public class LoginView extends JFrame {
 		panel.add(pass1);
 		panel.add(loginButton);
 		panel.add(cancelButton);
-
+			
+		if (DatabaseManager.getDBM().getLockedTime() != null // if still waiting
+																// for unlocking
+																// system
+				&& DatabaseManager.getDBM().getLockedTime().compareTo(Calendar.getInstance()) >= 0) {
+			lockButton();
+		}
+			
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-
+				
 				String username = text1.getText();
 				char[] pass = pass1.getPassword();
 				String password = new String(pass);
-				if(!systemIsLocked()){
-				if (DatabaseManager.wrongLogin() >= 9) { // Wrong login
-					lockSystem();
-					DatabaseManager.correctLogin();
-				} else if (DatabaseManager.getPassword().equals(password)
-						&& DatabaseManager.getUsername().equals(username)) {
 
-					new BomsView("Bike owner management system", bikeOwnerManagementSystem);
+				
+				if (!systemIsLocked()) {
+					if (DatabaseManager.wrongLogin() >= 9) { // Wrong login
+						lockSystem();
+						lockButton();
+					} else if (DatabaseManager.getPassword().equals(password)
+							&& DatabaseManager.getUsername().equals(username)) {
 
-					DatabaseManager.correctLogin();
-					dispose();
-				} else {
-					pass1.setText("");
+						new BomsView("Bike Owner Management System", bikeOwnerManagementSystem);
+
+						DatabaseManager.correctLogin();
+						dispose();
+					} else {
+						pass1.setText("");
+					}
 				}
-
-			}
 			}
 			public boolean systemIsLocked() {
-				if(DatabaseManager.getLockedTime() != null){
-				return DatabaseManager.getLockedTime().compareTo(
+				if(DatabaseManager.getDBM().getLockedTime() != null){
+				return DatabaseManager.getDBM().getLockedTime().compareTo(
 						Calendar.getInstance()) >= 0;
 				}else return false;
 			}
 
 			public void lockSystem() {
-				loginButton.setEnabled(false);
 
 				try {
 					lockedView = new LockedView();
@@ -81,23 +90,12 @@ public class LoginView extends JFrame {
 					e1.printStackTrace();
 				}
 
-				Calendar cal = DatabaseManager.getLockedTime();
-				
-
-				while (systemIsLocked()) {
-
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-
-				}
 				loginButton.setEnabled(true);
 				DatabaseManager.correctLogin();
 
 			}
 		});
+	
 
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
@@ -110,5 +108,25 @@ public class LoginView extends JFrame {
 		setVisible(true);
 
 	}
+	
+	public void lockButton() {
+		loginButton.setEnabled(false);
+		Timer timer = new Timer("GreyOutTask");
+		timer.schedule(new GreyOutTask(loginButton), DatabaseManager.getDBM().getLockedTime().getTime());
+	}
 
+}
+
+class GreyOutTask extends TimerTask {
+	JButton button;
+	
+	public GreyOutTask(JButton button) {
+		this.button = button;
+	}
+	
+	@Override
+	public void run() {
+		button.setEnabled(true);
+	}
+	
 }
