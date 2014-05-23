@@ -17,7 +17,7 @@ public class SearchResultFrame {
 
 	public SearchResultFrame(BikeOwner[] bikeOwners, final BomsView view) {
 
-		JFrame f = new JFrame();
+		JFrame f = new JFrame("Bike owners");
 		final JList list = new JList<BikeOwner>(bikeOwners);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
@@ -45,14 +45,14 @@ public class SearchResultFrame {
 			bikeArray[i] = bikes.get(i).toString();
 		}
 
-		JFrame f = new JFrame();
+		JFrame f = new JFrame("Bikes");
 		final JList list = new JList<String>(bikeArray);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 		ListSelectionListener listSelectionListener = new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent listSelectionEvent) {
 				if (!listSelectionEvent.getValueIsAdjusting()) {
-					view.buttonPanel.printBarcodeButton.setBarcodeToBePrinted(bikes.get(listSelectionEvent.getLastIndex()).getBarcode());
+					view.buttonPanel.printBarcodeButton.setBarcodeToBePrinted(bikes.get(list.getSelectedIndex()).getBarcode());
 					view.buttonPanel.printBarcodeButton.setEnabled(true);
 				}
 			}
