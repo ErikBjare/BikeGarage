@@ -22,7 +22,7 @@ public class Bike extends Model {
 	}
 
     public String getBarcode() {
-        return barcode;
+        return id;
     }
 
     public boolean isCheckedIn() {
