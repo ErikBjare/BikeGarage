@@ -64,7 +64,7 @@ public class DBTest extends TestCase {
             bikeOwner = new BikeOwner("User "+i, "0", "someone@example.com");
             bikeOwner.addBike();
         }
-        DatabaseManager.saveToFile("test_dbs/full_db.ser");
+        DatabaseManager.saveToFile("test_dbs/full_both/db.ser");
     }
 
     public void testMaxBike() {
@@ -73,7 +73,7 @@ public class DBTest extends TestCase {
         for(int i=0; i<5001; i++) {
             bikeOwner.addBike();
         }
-        DatabaseManager.saveToFile("test_dbs/full_bikes_db.ser");
+        DatabaseManager.saveToFile("test_dbs/full_bikes/db.ser");
     }
 
     public void testMaxBikeOwners() {
@@ -81,7 +81,7 @@ public class DBTest extends TestCase {
         for(int i=0; i<5001; i++) {
             new BikeOwner("User "+i, Integer.toString(i), "someone@example.com");
         }
-        DatabaseManager.saveToFile("test_dbs/full_bikeowners_db.ser");
+        DatabaseManager.saveToFile("test_dbs/full_bikeowners/db.ser");
     }
 
 }
