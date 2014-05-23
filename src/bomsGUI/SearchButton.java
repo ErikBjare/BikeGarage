@@ -6,6 +6,7 @@ import db.Bike;
 import db.BikeOwner;
 import db.DatabaseManager;
 
+import java.awt.*;
 import java.awt.event.*;
 
 public class SearchButton extends JButton implements ActionListener {
@@ -13,6 +14,7 @@ public class SearchButton extends JButton implements ActionListener {
 
 	public SearchButton(BomsView view) {
 		super("Search");
+        this.setAlignmentX(Component.CENTER_ALIGNMENT);
 		this.view = view;
 		addActionListener(this);
 		setToolTipText("Search after a bike owner");

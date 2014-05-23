@@ -1,7 +1,6 @@
 package bomsGUI;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -47,9 +46,10 @@ public class BomsView extends JFrame {
 
 		public LogOutButton(BomsView view) {
 			super("Log Out");
+            this.setAlignmentX(Component.CENTER_ALIGNMENT);
 			this.view = view;
 			addActionListener(this);
-			setToolTipText("Log out.");
+			setToolTipText("Log out");
 		}
 
 		public void actionPerformed(ActionEvent e) {

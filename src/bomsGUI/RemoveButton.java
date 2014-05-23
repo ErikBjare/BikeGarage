@@ -4,8 +4,8 @@ import javax.swing.*;
 
 import db.Bike;
 import db.BikeOwner;
-import db.DatabaseManager;
 
+import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
@@ -14,6 +14,7 @@ public class RemoveButton extends JButton implements ActionListener {
 
 	public RemoveButton(BomsView view) {
 		super("Remove");
+        this.setAlignmentX(Component.CENTER_ALIGNMENT);
 		this.view = view;
 		addActionListener(this);
 		setToolTipText("Remove a bike or a bike owner.");
@@ -23,9 +24,6 @@ public class RemoveButton extends JButton implements ActionListener {
 		String ssnOrName = JOptionPane
 				.showInputDialog("Enter SSN or name of the bike owner");
 
-		// TODO: Ta bort BikeOwner (2) eller Bike (3)
-		// TODO: Få upp cykelägerns (BikeOwner) cyklar (4)
-
 		if (ssnOrName == null) return;
 
 		BikeOwner bikeOwner;
@@ -33,7 +31,6 @@ public class RemoveButton extends JButton implements ActionListener {
         if(bikeOwner == null) bikeOwner = BikeOwner.getBySSN(ssnOrName);
 		
 	    if (bikeOwner != null) { // Checks if bike owner exists in database
-			// TODO (1)
 			Object[] options1 = {
 					"Remove the bike owner.",
 					"Remove a bike.", "Cancel" };
