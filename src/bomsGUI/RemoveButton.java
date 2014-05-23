@@ -2,9 +2,11 @@ package bomsGUI;
 
 import javax.swing.*;
 
+import db.Bike;
 import db.DatabaseManager;
 
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class RemoveButton extends JButton implements ActionListener {
 	private BomsView view;
@@ -72,18 +74,25 @@ public class RemoveButton extends JButton implements ActionListener {
 					bikeOwner.remove();
 				}
 			} else if (n == 1) {
-				// TODO (4)
-				Object[] possibilities = { "Bike1", "Bike2", "Bike3" };
+				ArrayList<Bike> bikes = bikeOwner.getBikes();
+				ArrayList<String> bikeIDs = new ArrayList<String>();
+				for(Bike bike : bikes){
+					bikeIDs.add(bike.getID());
+				}
+				Object[] choosableBikes = bikeIDs.toArray();
+//				Object[] possibilities = {"bike1", "bike2", "bike3"};
 				String s = (String) JOptionPane
 						.showInputDialog(null,
 								"Select the bike you wish to remove:",
 								"Removing a bike registered to " + ssnOrName,
-								JOptionPane.PLAIN_MESSAGE, null, possibilities,
+								JOptionPane.PLAIN_MESSAGE, null, choosableBikes,
 								"Bike1");
 
 				if ((s != null) && (s.length() > 0)) {
 					System.out.println("Removing " + s);
-					// TODO (3)
+//					bikes.get(bikeNumber);    fixa
+//					get
+//					bikeOwner.removeBike(s);
 				}
 
 			}
