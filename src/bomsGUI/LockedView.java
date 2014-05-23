@@ -20,7 +20,7 @@ public class LockedView{
 	
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 		cal = Calendar.getInstance();
-		cal.add(Calendar.MINUTE, 10);
+		cal.add(Calendar.SECOND, 20);
 		
 		JOptionPane.showMessageDialog(null,"You entered the login details too many times, the system will be locked until " + sdf.format(cal.getTime()));
 		
