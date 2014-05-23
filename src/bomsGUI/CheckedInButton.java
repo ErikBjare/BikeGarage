@@ -21,8 +21,8 @@ public class CheckedInButton extends JButton implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("Knappen fungerar");
-		ArrayList<Bike> checkedInBikes = Bike.getCheckedIn();
+
+		ArrayList<Bike> checkedInBikes = Bike.getCheckedInBikes();
 		StringBuilder sb = new StringBuilder();
 		for (Bike b : checkedInBikes) {
 			sb.append(b.toString() + "\n");

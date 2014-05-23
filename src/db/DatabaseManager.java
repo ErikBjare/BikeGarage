@@ -12,7 +12,7 @@ public class DatabaseManager implements Serializable {
 	private static final String USERNAME = "";
 	private static final String PASSWORD = "";
 	private static int loginAttempts = 0;
-	private static Calendar lockedTime;
+	private Calendar lockedTime;
 
 	private HashMap<String, Table> tables;
 
@@ -125,10 +125,11 @@ public class DatabaseManager implements Serializable {
 	public static String getUsername() {
 		return USERNAME;
 	}
-	public static void setLockedTime(Calendar cal){
-		DatabaseManager.lockedTime = cal;
+	public void setLockedTime(Calendar cal){
+		lockedTime = cal;
+		saveToFile();
 	}
-	public static Calendar getLockedTime(){
+	public Calendar getLockedTime(){
 		return lockedTime;
 	}
 
