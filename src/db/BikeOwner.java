@@ -24,7 +24,7 @@ public class BikeOwner extends Model implements Serializable {
 		this.ssn = ssn;
 		this.email = email;
 		bikes = new ArrayList<Bike>();
-		//pin = boms.generatePIN();
+		pin = newPIN();
 		save();
 	}
 
@@ -61,7 +61,7 @@ public class BikeOwner extends Model implements Serializable {
             while(pin.length() < 4){
                 pin = "0" + pin;
             }
-        } while(getByPIN(pin) == null);
+        } while(getByPIN(pin) != null);
         return pin;
     }
 

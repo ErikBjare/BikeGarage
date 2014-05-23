@@ -38,19 +38,18 @@ public class BicycleGarageManager {
 
 	public void authenticateBikeOwner(String pin) {
 		System.out.println("Someone ran authenticateBikeOwner! pin: " + pin);
-		BikeOwner ownerToAuthenticate = BikewOwner.getByPIN();
-		
-		if (ownerToAuthenticate != null){
-			
-			if (ownerToAuthenticate.hasCheckedInBikes()){
-				
+		BikeOwner ownerToAuthenticate = BikeOwner.getByPIN(pin);
+
+		if (ownerToAuthenticate != null) {
+
+			if (ownerToAuthenticate.hasCheckedInBikes()) {
+				entryLock.open(10);
+				terminal.lightLED(1, 3);
+
 			}
-		{
-		
-			
+		}
+
 	}
-		
-		
 
 	/*
 	 * Will be called when a user has used the bar code reader at the entry
