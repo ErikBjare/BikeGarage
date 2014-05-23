@@ -23,10 +23,9 @@ public class SearchResultFrame {
 
 		ListSelectionListener listSelectionListener = new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent listSelectionEvent) {
+				ArrayList<Bike> bikes = ((BikeOwner) list.getSelectedValue()).getBikes();
 				if (!listSelectionEvent.getValueIsAdjusting()) {
-					SearchResultFrame srf = new SearchResultFrame(
-							((BikeOwner) list.getSelectedValue()).getBikes(),
-							view);
+					SearchResultFrame srf = new SearchResultFrame(bikes, view);
 				}
 			}
 
@@ -43,7 +42,7 @@ public class SearchResultFrame {
 		final String[] bikeArray = new String[bikes.size()];
 		
 		for (int i = 0 ; i < bikes.size(); i++){
-			bikeArray[i] = bikes.get(i).getBarcode();
+			bikeArray[i] = bikes.get(i).toString();
 		}
 
 		JFrame f = new JFrame();
