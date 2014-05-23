@@ -2,6 +2,8 @@ package bomsGUI;
 
 import javax.swing.*;
 
+import db.DatabaseManager;
+
 import java.awt.event.*;
 
 public class RemoveButton extends JButton implements ActionListener {
@@ -24,7 +26,28 @@ public class RemoveButton extends JButton implements ActionListener {
 		
 		if (ssnOrName == null) {
 			return;
-		} else if (ssnOrName.equals("Filip") || ssnOrName.equals("01")) {
+		}
+		
+		boolean bikeOwnerExists = true;
+		
+		db.BikeOwner bikeOwner = null;
+		
+		db.Table bikeOwners =  DatabaseManager.getDBM().getTable("BikeOwner");
+		for(db.Model m : bikeOwners) {
+			db.BikeOwner bo = (db.BikeOwner) m;
+			System.out.println(bo.toString());
+			System.out.println(bo.getSSN());
+			if(bo.getSSN() == ssnOrName || bo.getName() == ssnOrName){
+				bikeOwnerExists = true;
+				bikeOwner = bo;
+			}
+		}
+		
+
+		
+		
+		
+		 if (bikeOwnerExists) { // Checks if bike owner exists in database
 			// TODO (1)
 			Object[] options1 = {
 					"Remove the bike owner.",
@@ -45,7 +68,8 @@ public class RemoveButton extends JButton implements ActionListener {
 						options2[0]);
 				if (m == 0) {
 					System.out.println("Remove the bike owner " + ssnOrName);
-					// TODO (2)
+					bikeOwner.removeAllBikes();
+					bikeOwner.remove();
 				}
 			} else if (n == 1) {
 				// TODO (4)
