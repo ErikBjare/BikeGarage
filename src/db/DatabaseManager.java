@@ -8,10 +8,10 @@ import java.util.Iterator;
 public class DatabaseManager implements Serializable {
 	public static DatabaseManager dbm = new DatabaseManager();
 
-	private static final String USERNAME = "OLOF";
-	private static final String PASSWORD = "YOLOF";
+	private static final String USERNAME = "";
+	private static final String PASSWORD = "";
 	private static int loginAttempts = 0;
-	private static Calendar cal;
+	private static Calendar lockedTime;
 
 	private HashMap<String, Table> tables;
 
@@ -111,10 +111,10 @@ public class DatabaseManager implements Serializable {
 		return USERNAME;
 	}
 	public static void setLockedTime(Calendar cal){
-		DatabaseManager.cal = cal;
+		DatabaseManager.lockedTime = cal;
 	}
 	public static Calendar getLockedTime(){
-		return cal;
+		return lockedTime;
 	}
 
 	/**

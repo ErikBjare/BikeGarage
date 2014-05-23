@@ -7,6 +7,7 @@ import java.util.Iterator;
 public class Table implements Iterable<Model>, Serializable {
     public String modelName;
     private HashMap<String, Model> rows;
+    private int counter = 0;
 
     // TODO: Support indexing?
 
@@ -27,6 +28,7 @@ public class Table implements Iterable<Model>, Serializable {
 
     public int maxID() {
         int max = 0;
+        System.out.println("hej " + counter );
         for (String is : rows.keySet()) {
             int i = Integer.parseInt(is);
             if (i > max) {
