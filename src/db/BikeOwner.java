@@ -81,6 +81,16 @@ public class BikeOwner extends Model implements Serializable {
     	return bikes;
     }
 
+    public static ArrayList<BikeOwner> findByNameOrSSN(String nameOrSSN) {
+    	ArrayList<BikeOwner> bikeowners = new ArrayList<BikeOwner>();
+        for(Model b : DatabaseManager.getDBM().getTable(modelName)) {
+            BikeOwner bikeowner = (BikeOwner) b;
+            if(bikeowner.name.equals(nameOrSSN)) bikeowners.add(bikeowner);
+            else if(bikeowner.ssn.equals(nameOrSSN)) bikeowners.add(bikeowner);
+        }
+        return bikeowners;
+    }
+    
     public static BikeOwner getBySSN(String ssn) {
         for(Model b : DatabaseManager.getDBM().getTable(modelName)) {
             BikeOwner bikeowner = (BikeOwner)b;

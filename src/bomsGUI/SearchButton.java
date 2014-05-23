@@ -7,6 +7,8 @@ import db.BikeOwner;
 import db.DatabaseManager;
 
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class SearchButton extends JButton implements ActionListener {
 	private BomsView view;
@@ -25,22 +27,17 @@ public class SearchButton extends JButton implements ActionListener {
         if (ssnOrName == null) {
             return;
         }
-
-        BikeOwner bikeOwner = BikeOwner.getByName(ssnOrName);
-        if(bikeOwner == null){
-        	bikeOwner = BikeOwner.getBySSN(ssnOrName);
-        }
-        System.out.println(bikeOwner);
-        if (bikeOwner == null) {
+        
+        
+        ArrayList<BikeOwner> arrayListBikeOwners = BikeOwner.findByNameOrSSN(ssnOrName);
+        BikeOwner[] bikeowners = arrayListBikeOwners.toArray(new BikeOwner[arrayListBikeOwners.size()]);
+        
+        if (bikeowners.length == 0) {
             System.out.println("Could not find BikeOwner");
             return;
         }
 
-        BikeOwner[] bikeOwners = new BikeOwner[1];
-        bikeOwners[0] = bikeOwner;
-
-
-    	SearchResultFrame srf = new SearchResultFrame(bikeOwners, view);
+    	SearchResultFrame srf = new SearchResultFrame(bikeowners, view);
 	}
 
 }
