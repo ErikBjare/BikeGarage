@@ -22,7 +22,7 @@ public class Bike extends Model implements Serializable {
 	}
 
     public String getBarcode() {
-        return barcode;
+        return id;
     }
 
     public boolean isCheckedIn() {
