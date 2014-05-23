@@ -23,7 +23,7 @@ public class BikeOwner extends Model implements Serializable {
 		this.name = name;
 		this.ssn = ssn;
 		this.email = email;
-		bikes = new ArrayList<Bike>();
+		this.bikes = new ArrayList<Bike>();
 		//pin = boms.generatePIN();
 		save();
 	}
