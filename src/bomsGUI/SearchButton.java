@@ -27,8 +27,10 @@ public class SearchButton extends JButton implements ActionListener {
         }
 
         BikeOwner bikeOwner = BikeOwner.getByName(ssnOrName);
+        if(bikeOwner == null){
+        	bikeOwner = BikeOwner.getBySSN(ssnOrName);
+        }
         System.out.println(bikeOwner);
-
         if (bikeOwner == null) {
             System.out.println("Could not find BikeOwner");
             return;
