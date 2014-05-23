@@ -77,7 +77,7 @@ public class BikeOwner extends Model {
     }
 
 	public String toString(){
-		return "{BIKEOWNER | name: " + name + ", ssn: " + ssn + "}";
+		return "{BIKEOWNER | name: " + name + ", ssn: " + ssn + ", email:" + email + "}";
 	}
 
     public static Table getTable() {
