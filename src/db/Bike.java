@@ -1,8 +1,9 @@
 package db;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Bike extends Model {
+public class Bike extends Model implements Serializable {
     public static String modelName = "Bike";
 
 	private BikeOwner owner;
@@ -15,7 +16,6 @@ public class Bike extends Model {
 		this.checkedIn = false;
         save();
 	}
-
 
 	public String toString(){
 		return "{BIKE | id: " + id + ", owner: " + owner.toString() + "}";
