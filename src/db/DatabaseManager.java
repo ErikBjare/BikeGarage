@@ -28,31 +28,21 @@ public class DatabaseManager implements Serializable {
 		return dbm;
 	}
 
-    public void saveToFile() {
+    public static void saveToFile() {
         try {
             // Serialize data object to a file
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("db.ser"));
-            out.writeObject(this);
+            out.writeObject(DatabaseManager.getDBM());
             out.close();
-
-            // Serialize data object to a byte array
-            ByteArrayOutputStream bos;
-            bos = new ByteArrayOutputStream();
-            out = new ObjectOutputStream(bos) ;
-            out.writeObject(this);
-            out.close();
-
-            // Get the bytes of the serialized object
-            byte[] buf = bos.toByteArray();
         } catch (IOException e) {
             System.out.println("There was an error");
             System.out.println(e);
         }
-        System.out.println("Saved database to file");
-        dbm.printTables();
+        //System.out.println("Saved database to file");
+        //dbm.printTables();
     }
 
-    public void loadFromFile() {
+    public static void loadFromFile() {
         try{
             FileInputStream dbm = new FileInputStream("db.ser");
             ObjectInputStream reader = new ObjectInputStream(dbm);
@@ -63,7 +53,7 @@ public class DatabaseManager implements Serializable {
             e.printStackTrace();
         }
         System.out.println("Loaded database from file");
-        dbm.printTables();
+        //dbm.printTables();
     }
 
     public void printTables() {
@@ -89,7 +79,6 @@ public class DatabaseManager implements Serializable {
     }
 
 	public Table getTable(String modelName) {
-        System.out.println(tables);
 		return tables.get(modelName);
 	}
 

@@ -58,7 +58,6 @@ public class BikeOwner extends Model {
     public static BikeOwner getBySSN(String ssn) {
         for(Model b : DatabaseManager.dbm.getTable(modelName)) {
             BikeOwner bikeowner = (BikeOwner)b;
-            System.out.println(bikeowner.getSSN());
             if(ssn.equals(bikeowner.getSSN())) {
                 return bikeowner;
             }
