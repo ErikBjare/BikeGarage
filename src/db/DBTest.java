@@ -57,12 +57,31 @@ public class DBTest extends TestCase {
         assertNotNull(bo);
     }
 
-    public void testMax() {
+    public void testMaxBoth() {
+        DatabaseManager.setAutosave(false);
         BikeOwner bikeOwner;
         for(int i=0; i<5001; i++) {
-            bikeOwner = new BikeOwner("User "+i, Integer.toString(i), "someone@example.com");
-            //bikeOwner.addBike();
+            bikeOwner = new BikeOwner("User "+i, "0", "someone@example.com");
+            bikeOwner.addBike();
         }
-        DatabaseManager.saveToFile();
+        DatabaseManager.saveToFile("test_dbs/full_db.ser");
     }
+
+    public void testMaxBike() {
+        DatabaseManager.setAutosave(false);
+        BikeOwner bikeOwner = new BikeOwner("User 0", "0", "someone@example.com");
+        for(int i=0; i<5001; i++) {
+            bikeOwner.addBike();
+        }
+        DatabaseManager.saveToFile("test_dbs/full_bikes_db.ser");
+    }
+
+    public void testMaxBikeOwners() {
+        DatabaseManager.setAutosave(false);
+        for(int i=0; i<5001; i++) {
+            new BikeOwner("User "+i, Integer.toString(i), "someone@example.com");
+        }
+        DatabaseManager.saveToFile("test_dbs/full_bikeowners_db.ser");
+    }
+
 }

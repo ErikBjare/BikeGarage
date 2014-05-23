@@ -8,6 +8,8 @@ import java.util.Iterator;
 
 public class DatabaseManager implements Serializable {
 	private static DatabaseManager dbm = getDBM();
+    private static boolean autosave = true;
+
 
 	private static final String USERNAME = "";
 	private static final String PASSWORD = "";
@@ -34,10 +36,10 @@ public class DatabaseManager implements Serializable {
 		return dbm;
 	}
 
-    public static void saveToFile() {
+    public static void saveToFile(String filename) {
         try {
             // Serialize data object to a file
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("db.ser"));
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filename));
             out.writeObject(DatabaseManager.getDBM());
             out.close();
         } catch (IOException e) {
@@ -46,6 +48,14 @@ public class DatabaseManager implements Serializable {
         }
         System.out.println("DB SAVED");
         dbm.printTables();
+    }
+
+    public static void saveToFile() {
+        saveToFile("db.ser");
+    }
+
+    public static void setAutosave(boolean val) {
+        autosave = val;
     }
 
     public static boolean loadFromFile() {
@@ -76,12 +86,16 @@ public class DatabaseManager implements Serializable {
 
     public void save(Model m) {
 		tables.get(m.modelName).save(m);
-        saveToFile();
+        if(autosave) {
+            saveToFile();
+        }
 	}
 
 	public void remove(Model m) {
 		tables.get(m.modelName).remove(m);
-        saveToFile();
+        if(autosave) {
+            saveToFile();
+        }
 	}
 
     public boolean hasModel(String modelName) {
