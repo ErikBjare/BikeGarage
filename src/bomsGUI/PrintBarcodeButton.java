@@ -1,6 +1,7 @@
 package bomsGUI;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
 
@@ -10,6 +11,7 @@ public class PrintBarcodeButton extends JButton implements ActionListener {
 	
 	public PrintBarcodeButton(BomsView view) {
 		super("Print Barcode");
+        this.setAlignmentX(Component.CENTER_ALIGNMENT);
 		this.view = view;
 		this.setEnabled(false);
 		addActionListener(this);

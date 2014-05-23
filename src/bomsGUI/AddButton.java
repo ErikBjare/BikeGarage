@@ -6,6 +6,7 @@ import db.DatabaseManager;
 
 import javax.swing.*;
 
+import java.awt.*;
 import java.awt.event.*;
 
 public class AddButton extends JButton implements ActionListener {
@@ -14,6 +15,7 @@ public class AddButton extends JButton implements ActionListener {
 
 	public AddButton(BomsView view) {
 		super("Add");
+        this.setAlignmentX(Component.CENTER_ALIGNMENT);
 		this.view = view;
 		addActionListener(this);
 		setToolTipText("Add a bike or a bike owner.");
