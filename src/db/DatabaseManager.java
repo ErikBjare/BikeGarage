@@ -11,8 +11,8 @@ public class DatabaseManager implements Serializable {
     private static boolean autosave = true;
 
 
-	private static final String USERNAME = "";
-	private static final String PASSWORD = "";
+	private static final String USERNAME = "ABCDEFGH";
+	private static final String PASSWORD = "12345678";
 	private static int loginAttempts = 0;
 	private Calendar lockedTime;
 
