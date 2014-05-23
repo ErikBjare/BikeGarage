@@ -15,10 +15,8 @@ public class BikeOwnerManagementSystem {
 	public static void main(String[] args) {
 		new BikeOwnerManagementSystem();
 	}
-	
 
 	public void printBarcode (String BicycleID){
 		printer.printBarcode(BicycleID);
 	}
-
 }

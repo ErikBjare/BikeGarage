@@ -56,4 +56,13 @@ public class DBTest extends TestCase {
         bo = BikeOwner.getBySSN("123");
         assertNotNull(bo);
     }
+
+    public void testMax() {
+        BikeOwner bikeOwner;
+        for(int i=0; i<5001; i++) {
+            bikeOwner = new BikeOwner("User "+i, Integer.toString(i), "someone@example.com");
+            //bikeOwner.addBike();
+        }
+        DatabaseManager.saveToFile();
+    }
 }
